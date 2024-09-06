@@ -6,14 +6,14 @@ const ProtectedRoute = ({ element }) => {
   const { user, loading } = useAuthStore();
 
   if (loading) {
-    return <div>Cargando...</div>; // O muestra un spinner/loader mientras verificas la autenticación
+    return <div>Cargando...</div>;
   }
 
   if (!user) {
-    return <Navigate to="/" />; // Redirige si el usuario no está autenticado
+    return <Navigate to="/" />;
   }
 
-  return element; // Si está autenticado, renderiza el componente
+  return element;
 };
 
 export default ProtectedRoute;
