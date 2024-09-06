@@ -7,7 +7,7 @@ import World from "../pages/world/World.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />, // Ruta pública
+    element: <Login />,
   },
   {
     path: "/world",

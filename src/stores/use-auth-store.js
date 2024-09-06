@@ -36,9 +36,7 @@ const useAuthStore = create((set) => ({
     onAuthStateChanged(auth, (user) => {
       if (user) {
         set({ user, loading: false });
-        console.log("entra aqui")
       } else {
-        console.log("entra en esta")
         set({ user: null, loading: false });
       }
     });
