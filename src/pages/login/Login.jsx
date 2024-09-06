@@ -10,7 +10,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
 const Login = () => {
-  const { user, loginGoogleWithPopUp, logout, observeAuthState, loading } =
+  const { user, loginGoogleWithPopUp, observeAuthState, loading } =
     useAuthStore();
 
   const navigate = useNavigate();
@@ -37,10 +37,6 @@ const Login = () => {
   const handleLogin = useCallback(() => {
     loginGoogleWithPopUp();
   }, [loginGoogleWithPopUp]);
-
-  const handleLogout = useCallback(() => {
-    logout();
-  }, [logout]);
 
   if (loading) {
     return <p className="loading-text">Cargando...</p>;
