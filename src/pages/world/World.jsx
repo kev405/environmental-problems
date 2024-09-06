@@ -1,12 +1,26 @@
 /* eslint-disable react/no-unknown-property */
+import { useCallback } from "react";
+import useAuthStore from "../../stores/use-auth-store";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { Button} from "antd";
 import House from "../house/House";
 import "./World.css";
 
 const World = () => {
+
+  const { logout } =
+    useAuthStore();
+
+  const handleLogout = useCallback(() => {
+    logout();
+  }, [logout]);
+
   return (
     <div className="world-container">
+      <Button onClick={handleLogout} style={{ width: "100%" }}>
+            Cerrar sesion
+          </Button>
       <Canvas
         camera={{
           position: [2, 0, 5],
