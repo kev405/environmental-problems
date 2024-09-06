@@ -4,21 +4,28 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
 const House = () => {
-  const boxRef = useRef(null);
+  const trunkRef = useRef();
+  const foliageRef = useRef();
 
   useFrame((state, delta) => {
-    boxRef.current.rotation.y += 1 * delta;
+    const elapsedTime = state.clock.getElapsedTime();
+
+    if (foliageRef.current) {
+      foliageRef.current.position.y = Math.cos(elapsedTime) * 0.5 + 2.5; // Oscila ligeramente arriba y abajo
+    }
+
   });
 
   return (
-    <group scale={[2, 1, 3]}>
-      <mesh position-y={1} rotation-y={Math.PI * 0.25} scale-y={1.5}>
-        <coneGeometry args={[1, 1, 4]} />
-        <meshStandardMaterial color={0xffc300} />
+    <group>
+      <mesh ref={trunkRef} position-y={1}>
+        <boxGeometry args={[0.5, 2, 0.5]} /> 
+        <meshPhysicalMaterial color={"saddlebrown"} roughness={0.8} />
       </mesh>
-      <mesh ref={boxRef}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={"purple"} />
+
+      <mesh ref={foliageRef} position={[0, 2.5, 0]}>
+        <sphereGeometry args={[1, 32, 32]} /> 
+        <meshPhysicalMaterial color={"green"} roughness={0.7} />
       </mesh>
     </group>
   );
