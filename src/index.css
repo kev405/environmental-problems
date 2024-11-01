@@ -8,3 +8,11 @@ body,
   height: 100vh;
   user-select: none;
 }
+
+/* Agrega esta sección para establecer la imagen de fondo */
+body {
+  background-image: url('./src/assets/images/fondo.jpeg'); /* Ruta a tu imagen */
+  background-size: cover; /* Cubre toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+}

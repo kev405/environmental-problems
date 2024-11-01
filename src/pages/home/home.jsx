@@ -4,6 +4,10 @@ import './Home.css'; // Opcional: estilos personalizados
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Sky from "../../components/Sky.jsx";
+import Turttle from "../../models-jsx/Login/Turttle";
+import Turttle2 from "../../models-jsx/Login/Turttle2";
+import { Link } from 'react-router-dom';
+
 
 const RotatingCamera = () => {
     const cameraRef = useRef();
@@ -34,6 +38,8 @@ const Home = () => {
     return (
         <div className="home-container">
             <Canvas className="island-canvas">
+                <Turttle position={[-15, 8, 2]} />
+                <Turttle2 position={[-15, 5, 1]} />
                 <RotatingCamera />
                 <OrbitControls
                     enablePan={false}
@@ -54,13 +60,15 @@ const Home = () => {
             </Canvas>
 
             <div className="menu-container">
-                <h1 className="menu-title">Menú</h1>
-                <button className="menu-button">Sobre Nosotros</button>
-                <button className="menu-button">Problemas Ambientales del Agua</button>
-                <button className="menu-button">Experiencias Interactivas 3D</button>
-                <button className="menu-button">Recursos Educativos</button>
-                <button className="menu-button">Participa</button>
-                <button className="menu-button" onClick={handleLogout}>Cerrar Sesion</button>
+                <h1 className="menu-title">MENÚ</h1>
+                <Link to="/nosotros" className="menu-link">
+                    <button className="menu-button">SOBRE NOSOTROS</button>
+                </Link>
+                <button className="menu-button">PROBLEMAS AMBIENTALES DEL AGUA</button>
+                <button className="menu-button">EXPERIENCIAS INTERACTIVAS 3D</button>
+                <button className="menu-button">RECURSOS EDUCATIVOS</button>
+                <button className="menu-button">PARTICIPA</button>
+                <button className="menu-button" onClick={handleLogout}>CERRAR SESION</button>
             </div>
         </div>
     );
