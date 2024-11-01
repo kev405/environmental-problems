@@ -1,0 +1,54 @@
+.home-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.island-canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu-container {
+    position: absolute; 
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para centrar el contenedor */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    background-color: white; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1; 
+    padding: 10px; /* Reducido para ocupar menos espacio */
+    max-width: 300px; /* Limita el ancho máximo del menú */
+    width: 100%; /* Ocupará todo el ancho hasta el máximo definido */
+}
+
+.menu-title {
+    font-size: 24px; /* Ajustado para menor tamaño */
+    color: #556B2F; 
+    margin-bottom: 10px; /* Espacio reducido */
+}
+
+.menu-button {
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    border-radius: 20px; 
+    padding: 10px; /* Reducido para ocupar menos espacio */
+    font-size: 14px; /* Tamaño de fuente reducido */
+    width: 100%; /* Botones ocupan todo el ancho del contenedor */
+    margin: 5px 0; /* Espacio reducido entre botones */
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.menu-button:hover {
+    background-color: #45a049; 
+}
