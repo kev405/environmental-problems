@@ -42,6 +42,12 @@
     letter-spacing: 2px
 }
 
+.menu-link {
+    text-decoration: none;
+    display: inline-block;
+    width: 100%; /* Asegura que el Link ocupe todo el ancho del contenedor */
+}
+
 .menu-button {
     background-color: #5BC7B6; 
     color: white; 
