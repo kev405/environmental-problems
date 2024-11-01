@@ -1,40 +1,62 @@
 /* src/pages/home/nosotros/Nosotros.css */
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;700&display=swap');
 
 .nosotros-container {
+    position: absolute; /* Asegúrate de que ocupe el espacio completo */
+    top: 0; /* Alinea al top */
+    left: 0; /* Alinea a la izquierda */
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100%; /* Ocupa toda la altura */
     padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    height: 100vh; /* Asegúrate de que el contenedor tenga altura */
+    background-image: url('../../../assets/images/fondo.jpeg'); /* Asegúrate de que la ruta sea correcta */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border: 2px solid red; /* Añade un borde temporal */
 }
+
 
 
 .nosotros-title {
-    font-size: 2rem;
+    font-family: 'Anton', sans-serif;
+    font-size: 40px;
     color: #fff; /* Cambia el color del texto si la imagen es oscura */
     text-align: center;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para mayor legibilidad */
+    color: #406D66; 
+    text-shadow: 2px 2px 4px rgba(252, 252, 252, 0.7); /* Sombra para mayor legibilidad */
+    letter-spacing: 2px
 }
+
+/* src/pages/home/nosotros/Nosotros.css */
 
 .nosotros-section {
+    font-family: 'Wix Madefor Text', sans-serif;
+    color: #000000; 
+    font-size: 40px;
     margin-bottom: 20px;
     background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente para las secciones */
-    padding: 10px; /* Espacio interno */
+    padding: 2px; /* Espacio interno */
     border-radius: 5px; /* Esquinas redondeadas */
+    width: 80%; 
+    max-width: 600px; 
+    margin-left: auto; /* Centra horizontalmente */
+    margin-right: auto; /* Centra horizontalmente */
+    text-align: center; 
+    font-weight: bold;
 }
 
+
 .nosotros-section h2 {
+    font-family: 'Anton', sans-serif;
     font-size: 1.5rem;
-    color: #5BC7B6; /* Usa el mismo color de tus botones para mantener la coherencia */
+    color: #406D66;
     margin-bottom: 10px;
+    letter-spacing: 2px
 }
 
 .nosotros-section p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #555;
+    color: rgb(0, 0, 0)
 }
