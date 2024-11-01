@@ -4,7 +4,6 @@ import useAuthStore from "../../stores/use-auth-store";
 import { TrackballControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Button} from "antd";
-import House from "../house/House";
 import "./World.css";
 
 const World = () => {
@@ -34,7 +33,6 @@ const World = () => {
           />
         <ambientLight intensity={0.3} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
-        <House />
       </Canvas>
     </div>
   );
