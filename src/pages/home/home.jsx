@@ -1,8 +1,12 @@
 import React, { useRef } from 'react';
-import './Home.css'; // Opcional: estilos personalizados
+import './Home.css'; 
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Sky from "../../components/Sky.jsx";
+import Turttle from "../../models-jsx/Login/Turttle";
+import Turttle2 from "../../models-jsx/Login/Turttle2";
+import { Link } from 'react-router-dom';
+
 
 const RotatingCamera = () => {
     const cameraRef = useRef();
@@ -24,6 +28,8 @@ const Home = () => {
     return (
         <div className="home-container">
             <Canvas className="island-canvas">
+                <Turttle position={[-15, 8, 2]} />
+                <Turttle2 position={[-15, 5, 1]} />
                 <RotatingCamera />
                 <OrbitControls
                     enablePan={false}
@@ -45,7 +51,9 @@ const Home = () => {
 
             <div className="menu-container">
                 <h1 className="menu-title">MENÚ</h1>
-                <button className="menu-button">SOBRE NOSOTROS</button>
+                <Link to="/nosotros" className="menu-link">
+                    <button className="menu-button">SOBRE NOSOTROS</button>
+                </Link>
                 <button className="menu-button">PROBLEMAS AMBIENTALES DEL AGUA</button>
                 <button className="menu-button">EXPERIENCIAS INTERACTIVAS 3D</button>
                 <button className="menu-button">RECURSOS EDUCATIVOS</button>
