@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
+import useAuthStore from "../../stores/use-auth-store";
 import './Home.css'; // Opcional: estilos personalizados
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -21,6 +22,15 @@ const RotatingCamera = () => {
 };
 
 const Home = () => {
+
+    const { logout } =
+    useAuthStore();
+
+    const handleLogout = useCallback(() => {
+        console.log("Cerrando sesion");
+        logout();
+    }, [logout]);
+
     return (
         <div className="home-container">
             <Canvas className="island-canvas">
@@ -50,6 +60,7 @@ const Home = () => {
                 <button className="menu-button">Experiencias Interactivas 3D</button>
                 <button className="menu-button">Recursos Educativos</button>
                 <button className="menu-button">Participa</button>
+                <button className="menu-button" onClick={handleLogout}>Cerrar Sesion</button>
             </div>
         </div>
     );
