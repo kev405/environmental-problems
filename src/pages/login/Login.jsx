@@ -1,15 +1,30 @@
 import "./Login.css";
-import { useCallback, useEffect, useState, Suspense } from "react";
+import { useCallback, useEffect, useState, Suspense, useMemo } from "react";
 import useAuthStore from "../../stores/use-auth-store";
 import UserDAO from "../../daos/UserDAO";
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, Alert } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import Shapes from "../../components/Shapes";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Html} from "@react-three/drei";
+import OceanLogin from "../../models-jsx/Login/OceanLogin";
+import Turttle from "../../models-jsx/Login/Turttle";
+import Turttle2 from "../../models-jsx/Login/Turttle2";
 
 const Login = () => {
+
+  const cameraSettings = {
+    position: [-17, 8, 1],
+  };
+
+  const map = useMemo(
+    () => [
+      { name: "forward", keys: ["ArrowUp", "KeyW"] },
+      { name: "escape", keys: ["Escape"] },
+    ],
+    []
+  );
+
   const { user, loginGoogleWithPopUp, observeAuthState, loading } =
     useAuthStore();
 
@@ -31,7 +46,6 @@ const Login = () => {
       UserDAO.createUser(newUser, newUser.email);
       navigate("/world");
     }
-    console.log(user);
   }, [user, navigate]);
 
   const handleLogin = useCallback(() => {
@@ -43,71 +57,66 @@ const Login = () => {
   }
 
   return (
-    <div className="login-wrapper">
+    <Canvas camera={cameraSettings}>
+        <ambientLight position={[-13, 8, 3]} intensity={5} />
+        <OceanLogin />
+        <Turttle position={[-15, 8, 2]} />
+        <Turttle2 position={[-15, 5, 1]} />
+          <Html center>
+            <div className="login-wrapper">
+                <div className="login-container">
+                    <h2 style={{ textAlign: "center" }}>Iniciar sesión</h2>
+                    {error && (
+                    <Alert
+                        message="Error"
+                        description={error}
+                        type="error"
+                        showIcon
+                        closable
+                        onClose={() => setError(null)}
+                    />
+                    )}
+                    <Form
+                    name="login_form"
+                    initialValues={{ remember: true }}
+                    layout="vertical"
+                    >
+                    <Form.Item
+                        name="email"
+                        label="Correo electrónico"
+                        rules={[
+                        { required: true, message: "Por favor ingresa tu correo electrónico" },
+                        { type: "email", message: "Por favor ingresa un correo electrónico válido" },
+                        ]}
+                    >
+                        <Input prefix={<UserOutlined />} placeholder="Correo electrónico" />
+                    </Form.Item>
 
-      <div className="login-container">
-
-        <Canvas className="canvas-3d" camera={{ position: [0, 0, 10], fov: 60 }}>
-          <Suspense fallback={null}>
-            <Shapes />
-          </Suspense>
-          <OrbitControls enableZoom={false} /> {/* Controlar rotación */}
+                    <Form.Item
+                        name="password"
+                        label="Contraseña"
+                        rules={[
+                        { required: true, message: "Por favor ingresa tu contraseña" },
+                        { min: 6, message: "La contraseña debe tener al menos 6 caracteres" },
+                        ]}
+                    >
+                        <Input.Password prefix={<LockOutlined />} placeholder="Contraseña" />
+                    </Form.Item>
+                    <Form.Item>
+                        <Button type="primary" htmlType="submit" style={{ width: "100%" }} loading={loading}>
+                        Iniciar sesión
+                        </Button>
+                    </Form.Item>
+                    <Form.Item>
+                    <Button onClick={handleLogin} style={{ width: "100%" }}>
+                        Iniciar sesión con google
+                    </Button>
+                    </Form.Item>
+                    </Form>
+                </div>
+            </div>
+        </Html>
         </Canvas>
-      
-        <h2 style={{ textAlign: "center" }}>Iniciar sesión</h2>
-
-        {error && (
-          <Alert
-            message="Error"
-            description={error}
-            type="error"
-            showIcon
-            closable
-            onClose={() => setError(null)}
-          />
-        )}
-
-        <Form
-          name="login_form"
-          initialValues={{ remember: true }}
-          layout="vertical"
-        >
-          <Form.Item
-            name="email"
-            label="Correo electrónico"
-            rules={[
-              { required: true, message: "Por favor ingresa tu correo electrónico" },
-              { type: "email", message: "Por favor ingresa un correo electrónico válido" },
-            ]}
-          >
-            <Input prefix={<UserOutlined />} placeholder="Correo electrónico" />
-          </Form.Item>
-
-          <Form.Item
-            name="password"
-            label="Contraseña"
-            rules={[
-              { required: true, message: "Por favor ingresa tu contraseña" },
-              { min: 6, message: "La contraseña debe tener al menos 6 caracteres" },
-            ]}
-          >
-            <Input.Password prefix={<LockOutlined />} placeholder="Contraseña" />
-          </Form.Item>
-
-          <Form.Item>
-            <Button type="primary" htmlType="submit" style={{ width: "100%" }} loading={loading}>
-              Iniciar sesión
-            </Button>
-          </Form.Item>
-
-          <Form.Item>
-          <Button onClick={handleLogin} style={{ width: "100%" }}>
-            Iniciar sesión con google
-          </Button>
-          </Form.Item>
-        </Form>
-      </div>
-    </div>
   );
 };
 
