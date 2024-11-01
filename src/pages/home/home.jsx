@@ -44,12 +44,12 @@ const Home = () => {
             </Canvas>
 
             <div className="menu-container">
-                <h1 className="menu-title">Menú</h1>
-                <button className="menu-button">Sobre Nosotros</button>
-                <button className="menu-button">Problemas Ambientales del Agua</button>
-                <button className="menu-button">Experiencias Interactivas 3D</button>
-                <button className="menu-button">Recursos Educativos</button>
-                <button className="menu-button">Participa</button>
+                <h1 className="menu-title">MENÚ</h1>
+                <button className="menu-button">SOBRE NOSOTROS</button>
+                <button className="menu-button">PROBLEMAS AMBIENTALES DEL AGUA</button>
+                <button className="menu-button">EXPERIENCIAS INTERACTIVAS 3D</button>
+                <button className="menu-button">RECURSOS EDUCATIVOS</button>
+                <button className="menu-button">PARTICIPA</button>
             </div>
         </div>
     );

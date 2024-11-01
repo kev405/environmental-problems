@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;700&display=swap');
+
 .home-container {
     position: relative;
     height: 100vh;
@@ -13,6 +16,7 @@
 }
 
 .menu-container {
+    font-family: 'Anton', sans-serif;
     position: absolute; 
     top: 50%; /* Centra verticalmente */
     left: 50%; /* Centra horizontalmente */
@@ -28,16 +32,18 @@
     padding: 10px; /* Reducido para ocupar menos espacio */
     max-width: 300px; /* Limita el ancho máximo del menú */
     width: 100%; /* Ocupará todo el ancho hasta el máximo definido */
+    border: 3px solid #406D66;
 }
 
 .menu-title {
-    font-size: 24px; /* Ajustado para menor tamaño */
-    color: #556B2F; 
+    font-size: 40px; /* Ajustado para menor tamaño */
+    color: #406D66; 
     margin-bottom: 10px; /* Espacio reducido */
+    letter-spacing: 2px
 }
 
 .menu-button {
-    background-color: #4CAF50; 
+    background-color: #5BC7B6; 
     color: white; 
     border: none; 
     border-radius: 20px; 
@@ -47,8 +53,10 @@
     margin: 5px 0; /* Espacio reducido entre botones */
     cursor: pointer; 
     transition: background-color 0.3s; 
+    font-family: 'Wix Madefor Text', sans-serif;
+    border: 3px solid #406D66;
 }
 
 .menu-button:hover {
-    background-color: #45a049; 
+    background-color: #94f0dd; 
 }
