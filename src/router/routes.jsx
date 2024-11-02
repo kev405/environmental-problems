@@ -18,10 +18,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home />
+    element: <ProtectedRoute element={<Home />} /> 
   },
   { 
-    path: "/nosotros", element: <Nosotros /> 
+    path: "/nosotros", element: <ProtectedRoute element={<Nosotros />} /> 
   },
 ]);
 
