@@ -1,6 +1,7 @@
 // src/pages/home/nosotros/nosotros.jsx
 import React from 'react';
 import './Nosotros.css';
+import { Text, Text3D } from '@react-three/drei';
 
 const Nosotros = () => {
     return (
@@ -18,6 +19,7 @@ const Nosotros = () => {
                 <h2>NUESTRA HISTORIA</h2>
                 <p>Este proyecto fue creado con el propósito de ayudar a la comunidad a comprender la importancia del agua y su conservación.</p>
             </section>
+        
         </div>
     );
 };

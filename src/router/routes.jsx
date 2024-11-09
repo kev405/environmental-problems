@@ -5,6 +5,7 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import World from "../pages/world/World.jsx";
 import Home from "../pages/home/home.jsx";
 import Nosotros from "../pages/home/nosotros/nosotros.jsx"; 
+import  ProEscasez  from "../components/escasez/ProEscasez.jsx";
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   { 
     path: "/nosotros", element: <ProtectedRoute element={<Nosotros />} /> 
   },
+  {
+    path: "/escasez", // Usar una ruta más clara
+    element: <ProEscasez/> // Esta ruta no está protegida
+  }
 ]);
 
 export default router;
