@@ -9,15 +9,15 @@ const Nosotros = () => {
             <h1 className="nosotros-title">SOBRE NOSOTROS</h1>
             <section className="nosotros-section">
                 <h2>NUESTRA MISIÓN</h2>
-                <p>Nuestra misión es crear conciencia sobre los problemas medioambientales y educar a las personas sobre el cuidado del agua.</p>
+                <p>En Univallenitas, nuestra misión es generar conciencia sobre los problemas medioambientales más urgentes, con un enfoque particular en la conservación del agua. Buscamos educar a las personas sobre la importancia de este recurso vital, inspirando acciones concretas para su preservación.</p>
             </section>
             <section className="nosotros-section">
                 <h2>EQUIPO</h2>
-                <p>Somos un equipo de estudiantes apasionados por el medio ambiente y la tecnología.</p>
+                <p>Somos un equipo de estudiantes de la Universidad del Valle, unidos por nuestra pasión por el medio ambiente y la tecnología. Nos motiva crear soluciones innovadoras que no solo informen, sino que también impliquen a los usuarios en el proceso educativo a través de experiencias inmersivas y accesibles.</p>
             </section>
             <section className="nosotros-section">
                 <h2>NUESTRA HISTORIA</h2>
-                <p>Este proyecto fue creado con el propósito de ayudar a la comunidad a comprender la importancia del agua y su conservación.</p>
+                <p>Este proyecto nació con el propósito de ayudar a la comunidad a comprender la magnitud de los problemas relacionados con el agua, así como la urgencia de su conservación. A través de nuestra plataforma, queremos ofrecer una herramienta educativa que impulse a las personas a ser parte activa de la solución.</p>
             </section>
         
         </div>
