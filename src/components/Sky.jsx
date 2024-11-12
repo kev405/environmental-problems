@@ -1,5 +1,6 @@
 import { Environment } from "@react-three/drei";
 
+// eslint-disable-next-line no-unused-vars
 const Sky = (props) => {
   return (
     <Environment
