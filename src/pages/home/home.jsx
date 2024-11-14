@@ -4,8 +4,8 @@ import './Home.css'; // Opcional: estilos personalizados
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Sky from "../../components/Sky.jsx";
-import Turttle from "../../models-jsx/Login/Turttle";
-import Turttle2 from "../../models-jsx/Login/Turttle2";
+import Turttle from "../../models-jsx/Login/TurttleLogin";
+import Turttle2 from "../../models-jsx/Login/TurttleLogin2";
 import { Link } from 'react-router-dom';
 
 
