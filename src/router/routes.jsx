@@ -5,6 +5,7 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import World from "../pages/world/World.jsx";
 import Home from "../pages/home/home.jsx";
 import Nosotros from "../pages/home/nosotros/nosotros.jsx"; 
+import Introduction from "../pages/water-pollution/Introduction.jsx";
 
 
 const router = createBrowserRouter([
@@ -21,7 +22,12 @@ const router = createBrowserRouter([
     element: <ProtectedRoute element={<Home />} /> 
   },
   { 
-    path: "/nosotros", element: <ProtectedRoute element={<Nosotros />} /> 
+    path: "/nosotros", 
+    element: <ProtectedRoute element={<Nosotros />} /> 
+  },
+  {
+    path: "/water-pollution",
+    element: <ProtectedRoute element={<Introduction />} />
   },
 ]);
 
