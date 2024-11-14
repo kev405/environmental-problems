@@ -1,70 +1,102 @@
 /* eslint-disable react/no-unknown-property */
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, Html } from "@react-three/drei";
 import Escasez from "./Escasez";
 
+const controls = {
+  left: "left",
+  right: "right",
+};
+
 export const ProEscasez = () => {
-  // Estado para controlar la visibilidad del div
   const [isDivVisible, setIsDivVisible] = useState(false);
   const [isLeft, setIsLeft] = useState(false);
+  const [rotationY, setRotationY] = useState(0); // Estado para controlar la rotación
 
-  // Función para mostrar/ocultar el div
-  const handleButtonClick = () => {
-    if (!isLeft && !isDivVisible) {
-      setIsDivVisible(true); // Muestra el div
-      setIsLeft(!isLeft); // Cambia el estado al hacer clic
-    } else if (!isLeft && isDivVisible) {
-      setIsLeft(!isLeft); // Cambia el estado al hacer clic
-    } else {
-      setIsDivVisible(!isDivVisible);
-      // Cambia el estado al hacer clic
+  // Mapeo de teclas
+  const map = useMemo(
+    () => [
+      { name: controls.left, keys: ["ArrowLeft", "KeyA"] },
+      { name: controls.right, keys: ["ArrowRight", "KeyD"] },
+    ],
+    []
+  );
+
+  const handleKeyChange = (name, pressed) => {
+    if (name === controls.left && pressed) {
+      rotateLeft();
     }
+    if (name === controls.right && pressed) {
+      rotateRight();
+    }
+  };
+
+  const rotateLeft = () => setRotationY((prev) => prev - 0.05); // Ajuste de rotación a la izquierda
+  const rotateRight = () => setRotationY((prev) => prev + 0.05); // Ajuste de rotación a la derecha
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      map.forEach((control) => {
+        if (control.keys.includes(event.code)) {
+          handleKeyChange(control.name, true);
+        }
+      });
+    };
+
+    const handleKeyUp = (event) => {
+      map.forEach((control) => {
+        if (control.keys.includes(event.code)) {
+          handleKeyChange(control.name, false);
+        }
+      });
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [map]);
+
+  const handleButtonClick = () => {
+    setIsDivVisible((prev) => !prev);
+    setIsLeft(true);
   };
 
   const handleButtonClickDerecho = () => {
-    if (!isLeft && !isDivVisible) {
-      setIsDivVisible(!isDivVisible); // Muestra el div
-    } else if (isLeft && isDivVisible) {
-      setIsLeft(!isLeft); // Cambia el estado al hacer clic
-    } else {
-      setIsLeft(false);
-      setIsDivVisible(!isDivVisible); // Cambia el estado al hacer clic
-    }
+    setIsDivVisible((prev) => !prev);
+    setIsLeft(false);
   };
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        width: "100vw",
-        overflow: "hidden",
-      }}
-    >
+    <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
       <Canvas camera={{ position: [0, 5, 15] }}>
         <ambientLight intensity={0.9} />
         <directionalLight position={[10, 10, 10]} intensity={5} />
 
-        <Escasez />
+        <group rotation-y={rotationY}>
+          <Escasez />
+        </group>
 
-        {/* Título HTML fijado en el entorno 3D */}
         <Html position={[0, 8, 0]} center>
           <h1
             style={{
-              color: "#406D66", // Color de relleno de las letras
+              color: "#406D66",
               letterSpacing: "2px",
               fontFamily: "Anton",
               fontSize: "3rem",
               textAlign: "center",
               whiteSpace: "nowrap",
-              WebkitTextStroke: "1px #bbb", // Borde negro de 1px alrededor de las letras
+              WebkitTextStroke: "1px #bbb",
             }}
           >
             ESCASEZ DEL AGUA
           </h1>
         </Html>
 
-        {/* Botón en la esquina superior izquierda */}
         <Html position={[-10, 7, 0]} center>
           <button
             style={{
@@ -72,22 +104,21 @@ export const ProEscasez = () => {
               letterSpacing: "2px",
               fontFamily: "Wix Madefor Text",
               fontWeight: "bold",
-              padding: "0.5rem 2rem", // Más ancho con padding
-              borderRadius: "15px", // Bordes redondeados
-              border: "2px solid #406D66", // Borde con color
-              backgroundColor: "rgba(255, 255, 255, 0.6)", // Fondo transparente
-              color: "#406D66", // Color del texto
-              cursor: "pointer", // Cambiar el cursor cuando pasa sobre el botón
-              outline: "none", // Elimina el borde de enfoque predeterminado
-              transition: "all 0.3s ease", // Efecto suave al pasar el ratón
+              padding: "0.5rem 2rem",
+              borderRadius: "15px",
+              border: "2px solid #406D66",
+              backgroundColor: "rgba(255, 255, 255, 0.6)",
+              color: "#406D66",
+              cursor: "pointer",
+              outline: "none",
+              transition: "all 0.3s ease",
             }}
-            onClick={handleButtonClick} // Cambia el estado al hacer clic
+            onClick={handleButtonClick}
           >
             Introducción
           </button>
         </Html>
 
-        {/* Botón en la esquina superior derecha */}
         <Html position={[10, 7, 0]} center>
           <button
             style={{
@@ -95,39 +126,37 @@ export const ProEscasez = () => {
               letterSpacing: "2px",
               fontFamily: "Wix Madefor Text",
               fontWeight: "bold",
-              padding: "0.5rem 2rem", // Más ancho con padding
-              borderRadius: "15px", // Bordes redondeados
-              border: "2px solid #406D66", // Borde con color
-              backgroundColor: "rgba(255, 255, 255, 0.6)", // Fondo transparente
-              color: "#406D66", // Color del texto
-              cursor: "pointer", // Cambiar el cursor cuando pasa sobre el botón
-              outline: "none", // Elimina el borde de enfoque predeterminado
-              transition: "all 0.3s ease", // Efecto suave al pasar el ratón
+              padding: "0.5rem 2rem",
+              borderRadius: "15px",
+              border: "2px solid #406D66",
+              backgroundColor: "rgba(255, 255, 255, 0.6)",
+              color: "#406D66",
+              cursor: "pointer",
+              outline: "none",
+              transition: "all 0.3s ease",
             }}
-            onClick={handleButtonClickDerecho} // Cambia el estado al hacer clic
+            onClick={handleButtonClickDerecho}
           >
             Sensibilización
           </button>
         </Html>
 
-        {/* Mostrar el div solo si isDivVisible es true */}
-        {/* Mostrar el div solo si isDivVisible es true */}
         <Html position={[0, 0, 0]} center>
           <div
             style={{
-              display: isDivVisible ? "flex" : "none", // Mostrar u ocultar según el estado
+              display: isDivVisible ? "flex" : "none",
               justifyContent: "center",
               alignItems: "center",
               backgroundColor: "rgba(255, 255, 255, 0.9)",
-              width: "50vw", // 50% de la pantalla en anchura
-              maxHeight: "80vh", // Máxima altura para que no ocupe toda la pantalla
-              position: "absolute", // Asegura que el div se coloque de forma absoluta
-              top: "50%", // Centrado verticalmente
-              left: "50%", // Centrado horizontalmente
-              transform: "translate(-50%, -50%)", // Ajuste para centrar el div
-              padding: "1rem", // Espaciado interno
-              borderRadius: "10px", // Bordes redondeados
-              overflow: "auto", // Añade scroll solo si es necesario
+              width: "50vw",
+              maxHeight: "80vh",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              padding: "1rem",
+              borderRadius: "10px",
+              overflow: "auto",
             }}
           >
             <div
@@ -251,6 +280,7 @@ export const ProEscasez = () => {
             </div>
           </div>
         </Html>
+
         <OrbitControls enablePan={true} enableZoom={true} />
 
         <Environment
