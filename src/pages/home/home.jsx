@@ -1,22 +1,9 @@
 import React, { useRef, useCallback } from "react";
 import useAuthStore from "../../stores/use-auth-store";
-<<<<<<< HEAD
 import "./Home.css"; // Opcional: estilos personalizados
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
-import Turttle from "../../models-jsx/Login/Turttle";
-import Turttle2 from "../../models-jsx/Login/Turttle2";
 import { Link } from "react-router-dom";
-=======
-import './Home.css'; // Opcional: estilos personalizados
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import Sky from "../../components/Sky.jsx";
-import Turttle from "../../models-jsx/Login/TurttleLogin";
-import Turttle2 from "../../models-jsx/Login/TurttleLogin2";
-import { Link } from 'react-router-dom';
-
->>>>>>> 3685a5f990d2c7a5a35a34d099ba4b5deaabd1da
 
 const RotatingCamera = () => {
   const cameraRef = useRef();

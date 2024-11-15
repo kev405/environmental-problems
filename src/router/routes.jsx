@@ -5,11 +5,9 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import World from "../pages/world/World.jsx";
 import Home from "../pages/home/home.jsx";
 import Nosotros from "../pages/home/nosotros/nosotros.jsx"; 
-<<<<<<< HEAD
 import  ProEscasez  from "../components/escasez/ProEscasez.jsx";
-=======
 import Introduction from "../pages/water-pollution/Introduction.jsx";
->>>>>>> 3685a5f990d2c7a5a35a34d099ba4b5deaabd1da
+
 
 
 const router = createBrowserRouter([
@@ -31,7 +29,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/water-pollution",
-    element: <ProtectedRoute element={<Introduction />} />
+    element: <ProtectedRoute element={<Introduction/>} />
   },
   {
     path: "/escasez", // Usar una ruta más clara
