@@ -13,6 +13,8 @@ export const ProEscasez = () => {
   const [isDivVisible, setIsDivVisible] = useState(false);
   const [isLeft, setIsLeft] = useState(false);
   const [rotationY, setRotationY] = useState(0); // Estado para controlar la rotación
+  const [position, setPosition] = useState([0, 0, 0]); 
+  const [isNear, setIsNear] = useState(false);
 
   // Mapeo de teclas
   const map = useMemo(
@@ -61,6 +63,11 @@ export const ProEscasez = () => {
     };
   }, [map]);
 
+  const handleModelClick = () => {
+    setIsNear((prev) => !prev); // Alternar entre cerca y lejos
+  };
+
+
   const handleButtonClick = () => {
     setIsDivVisible((prev) => !prev);
     setIsLeft(true);
@@ -77,7 +84,7 @@ export const ProEscasez = () => {
         <ambientLight intensity={0.9} />
         <directionalLight position={[10, 10, 10]} intensity={5} />
 
-        <group rotation-y={rotationY}>
+        <group rotation-y={rotationY} position={[0, 0, isNear ? 5 : 0]} onClick={handleModelClick}>
           <Escasez />
         </group>
 
