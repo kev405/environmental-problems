@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-unknown-property */
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 const Island = (props) => {
 
+    // eslint-disable-next-line no-unused-vars
     const groupRef = useRef();
     const { nodes, materials } = useGLTF('models-3d/wood_signal.glb');
     const islandProps = useGLTF('models-3d/wood_signal.glb');

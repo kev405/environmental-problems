@@ -1,11 +1,11 @@
 import React, { useRef, useCallback } from 'react';
-import useAuthStore from "../../stores/use-auth-store";
+import useAuthStore from "../../stores/use-auth-store.js";
 import './Home.css'; // Opcional: estilos personalizados
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Sky from "../../components/Sky.jsx";
-import Turttle from "../../models-jsx/Login/TurttleLogin";
-import Turttle2 from "../../models-jsx/Login/TurttleLogin2";
+import Turttle from "../../models-jsx/Login/TurttleLogin.jsx";
+import Turttle2 from "../../models-jsx/Login/TurttleLogin2.jsx";
 import { Link } from 'react-router-dom';
 
 

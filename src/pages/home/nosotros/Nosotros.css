@@ -1,62 +1,63 @@
 /* src/pages/home/nosotros/Nosotros.css */
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700;1,700&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 .nosotros-container {
-    position: absolute; /* Asegúrate de que ocupe el espacio completo */
-    top: 0; /* Alinea al top */
-    left: 0; /* Alinea a la izquierda */
-    width: 100%; /* Ocupa todo el ancho */
-    height: 100%; /* Ocupa toda la altura */
-    padding: 20px;
-    background-image: url('../../../assets/images/fondo.jpeg'); /* Asegúrate de que la ruta sea correcta */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 4% 8%;  
+    background: url('/images/fondo.jpg') center / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
 }
-
-
 
 .nosotros-title {
-    font-family: 'Anton', sans-serif;
-    font-size: 40px;
-    color: #fff; /* Cambia el color del texto si la imagen es oscura */
-    text-align: center;
+    font-family: "Kanit", sans-serif;
+    font-size: 3vw;
+    color: #406D66;
+    margin-top: 50px;
     margin-bottom: 20px;
-    color: #406D66; 
-    text-shadow: 2px 2px 4px rgba(252, 252, 252, 0.7); /* Sombra para mayor legibilidad */
-    letter-spacing: 2px
+    text-shadow: 2px 2px 4px rgba(252, 252, 252, 0.7);
+    text-align: center;
+    letter-spacing: -0.5px; 
 }
-
-/* src/pages/home/nosotros/Nosotros.css */
 
 .nosotros-section {
     font-family: 'Wix Madefor Text', sans-serif;
-    color: #000000; 
-    font-size: 40px;
-    margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente para las secciones */
-    padding: 2px; /* Espacio interno */
-    border-radius: 5px; /* Esquinas redondeadas */
-    width: 80%; 
-    max-width: 600px; 
-    margin-left: auto; /* Centra horizontalmente */
-    margin-right: auto; /* Centra horizontalmente */
-    text-align: center; 
+    font-size: 0.9rem;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 12px;  
+    border-radius: 10px;
+    width: 100%;
+    max-width: 750px;
     font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    letter-spacing: -0.5px; 
 }
 
-
 .nosotros-section h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.5rem;
+    font-family: "Kanit", sans-serif;
+    text-shadow: 2px 2px 4px rgba(252, 252, 252, 0.7);
+    font-size: 1.4rem;
     color: #406D66;
-    margin-bottom: 10px;
-    letter-spacing: 2px
+    margin-bottom: 15px;
+    letter-spacing: -0.5px; 
 }
 
 .nosotros-section p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 1.6;
-    color: rgb(0, 0, 0)
+    color: #333;
+    letter-spacing: -0.5px; 
 }
