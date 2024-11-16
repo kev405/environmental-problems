@@ -4,7 +4,7 @@ import { OrbitControls } from '@react-three/drei';
 import WaterComponent from "./components/WaterComponent";
 import "./water_Acidification.css"
 
-const water_Acidification = () => {
+const Water_Acidification = () => {
     return (
         <>
             <div className="home-control">
@@ -20,4 +20,4 @@ const water_Acidification = () => {
     );
 };
 
-export default water_Acidification;
+export default Water_Acidification;
