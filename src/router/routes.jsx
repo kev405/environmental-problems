@@ -7,7 +7,7 @@ import Home from "../pages/home/Home.jsx";
 import Nosotros from "../pages/home/nosotros/Nosotros.jsx"; 
 import  ProEscasez  from "../components/escasez/ProEscasez.jsx";
 import Introduction from "../pages/water-pollution/Introduction.jsx";
-import WaterAcidification from "../pages/waterAcidification/water_Acidification.jsx";
+import WaterAcidification from "../pages/waterAcidification/Water_Acidification.jsx";
 
 
 

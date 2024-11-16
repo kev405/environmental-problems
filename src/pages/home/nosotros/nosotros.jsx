@@ -1,4 +1,3 @@
-// src/pages/home/nosotros/nosotros.jsx
 import React from 'react';
 import './Nosotros.css';
 import { Text, Text3D } from '@react-three/drei';
