@@ -6,6 +6,7 @@ import { OrbitControls } from '@react-three/drei';
 import Sky from "../../components/Sky.jsx";
 import Turttle from "../../models-jsx/Login/TurttleLogin";
 import Turttle2 from "../../models-jsx/Login/TurttleLogin2";
+import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 
@@ -26,6 +27,7 @@ const RotatingCamera = () => {
 };
 
 const Home = () => {
+    const navigate = useNavigate();
 
     const { logout } =
     useAuthStore();
@@ -34,6 +36,10 @@ const Home = () => {
         console.log("Cerrando sesion");
         logout();
     }, [logout]);
+
+    const handleClicked = () => {
+        navigate("/water-pollution");
+    };
 
     return (
         <div className="home-container">
@@ -64,9 +70,9 @@ const Home = () => {
                 <Link to="/nosotros" className="menu-link">
                     <button className="menu-button">SOBRE NOSOTROS</button>
                 </Link>
-                <button className="menu-button">PROBLEMAS AMBIENTALES DEL AGUA</button>
-                <button className="menu-button">EXPERIENCIAS INTERACTIVAS 3D</button>
-                <button className="menu-button">RECURSOS EDUCATIVOS</button>
+                <button className="menu-button" onClick={handleClicked}>CONTAMINACION DEL AGUA</button>
+                <button className="menu-button">ESCAZES DE AGUA</button>
+                <button className="menu-button">ACIDIFICACION DE LOS OCEANOS</button>
                 <button className="menu-button">PARTICIPA</button>
                 <button className="menu-button" onClick={handleLogout}>CERRAR SESION</button>
             </div>

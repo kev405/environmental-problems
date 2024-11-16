@@ -21,7 +21,7 @@ const Login = () => {
       };
       console.log(newUser);
       UserDAO.createUser(newUser, newUser.email);
-      navigate("/home");
+      navigate("/intro");
     }
   }, [user, navigate]);
 
