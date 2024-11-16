@@ -1,4 +1,4 @@
-import "./Introduction.css";
+import "./ProblemPollution.css";
 import { useRef, useState } from "react";
 import useAuthStore from "../../stores/use-auth-store";
 import { Canvas } from "@react-three/fiber";
@@ -12,7 +12,7 @@ import * as THREE from "three";
 import CameraController from "../controls/CameraControls";
 import WelcomeText from "./components/WelcomeText";
 
-const Introduction = () => {
+const ProblemPollution = () => {
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(-9.445855186052283, 5.831885020952239, -3.950013148400385));
   const [targetLookAt, setTargetLookAt] = useState(new THREE.Vector3(-14.254039362526308, 2.686472104036879, -1.7887087400792328));
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -112,4 +112,4 @@ const Introduction = () => {
   );
 };
 
-export default Introduction;
+export default ProblemPollution;
