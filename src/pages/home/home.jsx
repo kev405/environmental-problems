@@ -1,64 +1,80 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback } from 'react';
 import useAuthStore from "../../stores/use-auth-store";
-import "./Home.css"; // Opcional: estilos personalizados
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Environment } from "@react-three/drei";
-import { Link } from "react-router-dom";
+import './Home.css'; // Opcional: estilos personalizados
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Sky from "../../components/Sky.jsx";
+import Turttle from "../../models-jsx/Login/TurttleLogin";
+import Turttle2 from "../../models-jsx/Login/TurttleLogin2";
+import { Link } from 'react-router-dom';
+
 
 const RotatingCamera = () => {
-  const cameraRef = useRef();
+    const cameraRef = useRef();
 
-  useFrame(({ clock }) => {
-    const elapsedTime = clock.getElapsedTime();
-    // Rota la cámara horizontalmente alrededor del eje Y
-    if (cameraRef.current) {
-      cameraRef.current.position.x = Math.sin(elapsedTime) * 3; // Ajusta el radio de rotación
-      cameraRef.current.position.z = Math.cos(elapsedTime) * 3; // Ajusta el radio de rotación
-      cameraRef.current.position.y = 2; // Mantiene la altura de la cámara
-      cameraRef.current.lookAt(0, 0, 0); // Asegura que siempre mire al centro de la escena
-    }
-  });
+    useFrame(({ clock }) => {
+        const elapsedTime = clock.getElapsedTime();
+        // Rota la cámara horizontalmente alrededor del eje Y
+        if (cameraRef.current) {
+            cameraRef.current.position.x = Math.sin(elapsedTime) * 3; // Ajusta el radio de rotación
+            cameraRef.current.position.z = Math.cos(elapsedTime) * 3; // Ajusta el radio de rotación
+            cameraRef.current.position.y = 2; // Mantiene la altura de la cámara
+        }
+    });
 
-  return <perspectiveCamera ref={cameraRef} position={[3, 2, 5]} />;
+    return <perspectiveCamera ref={cameraRef} position={[3, 2, 5]} />;
 };
 
 const Home = () => {
-  const { logout } = useAuthStore();
 
-  const handleLogout = useCallback(() => {
-    console.log("Cerrando sesion");
-    logout();
-  }, [logout]);
+    const { logout } =
+    useAuthStore();
 
-  return (
-    <div className="home-container" style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
-      <Canvas
-        style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-      >
-        {/* Elementos en la escena */}
-        <RotatingCamera />
-        <OrbitControls enablePan={false} enableZoom={false} enableRotate={true} />
-        <Environment
-          files="/cubemap/sky/lakeside_2k.hdr"
-          background={true} // Hace que el entorno sea el fondo
-        />
-      </Canvas>
+    const handleLogout = useCallback(() => {
+        console.log("Cerrando sesion");
+        logout();
+    }, [logout]);
 
-      <div className="menu-container" style={{ position: "relative", zIndex: 1 }}>
-        <h1 className="menu-title">MENÚ</h1>
-        <Link to="/nosotros" className="menu-link">
-          <button className="menu-button">SOBRE NOSOTROS</button>
-        </Link>
-        <button className="menu-button">PROBLEMAS AMBIENTALES DEL AGUA</button>
-        <button className="menu-button">EXPERIENCIAS INTERACTIVAS 3D</button>
-        <button className="menu-button">RECURSOS EDUCATIVOS</button>
-        <button className="menu-button">PARTICIPA</button>
-        <button className="menu-button" onClick={handleLogout}>
-          CERRAR SESION
-        </button>
-      </div>
-    </div>
-  );
+    return (
+        <div className="home-container">
+            <Canvas className="island-canvas">
+                <Turttle position={[-15, 8, 2]} />
+                <Turttle2 position={[-15, 5, 1]} />
+                <RotatingCamera />
+                <OrbitControls
+                    enablePan={false}
+                    enableZoom={false}
+                    enableRotate={true}
+                />
+                <Sky
+                    sunPosition={[0, 0, -1]}
+                    inclination={0.2}
+                    azimuth={50}
+                    mieCoefficient={0.005}
+                    elevation={50}
+                    mieDirectionalG={0.07}
+                    rayleigh={3}
+                    turbidity={0}
+                    exposure={1}
+                />
+            </Canvas>
+
+            <div className="menu-container">
+                <h1 className="menu-title">MENÚ</h1>
+                <Link to="/nosotros" className="menu-link">
+                    <button className="menu-button">SOBRE NOSOTROS</button>
+                </Link>
+                <button className="menu-button">PROBLEMAS AMBIENTALES DEL AGUA</button>
+                <Link to="/water-acidification" className="menu-link">
+                    <button className="menu-button">ACIDIFICACIÓN DEL AGUA</button>
+                </Link>
+                <button className="menu-button">EXPERIENCIAS INTERACTIVAS 3D</button>
+                <button className="menu-button">RECURSOS EDUCATIVOS</button>
+                <button className="menu-button">PARTICIPA</button>
+                <button className="menu-button" onClick={handleLogout}>CERRAR SESION</button>
+            </div>
+        </div>
+    );
 };
 
 export default Home;

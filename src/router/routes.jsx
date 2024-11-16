@@ -7,6 +7,7 @@ import Home from "../pages/home/Home.jsx";
 import Nosotros from "../pages/home/nosotros/Nosotros.jsx"; 
 import  ProEscasez  from "../components/escasez/ProEscasez.jsx";
 import Introduction from "../pages/water-pollution/Introduction.jsx";
+import WaterAcidification from "../pages/waterAcidification/water_Acidification.jsx";
 
 
 
@@ -34,7 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/escasez", // Usar una ruta más clara
     element: <ProEscasez/> // Esta ruta no está protegida
-  }
+  }, {
+    path: "/water-acidification",
+    element: <ProtectedRoute element={<WaterAcidification />} />
+  },
 ]);
 
 export default router;

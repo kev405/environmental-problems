@@ -1,0 +1,21 @@
+  /* Contenedor principal que organiza la estructura */
+  .home-container {
+    display: flex;
+    align-content: center;
+    height: 100vh; /* Hace que ocupe toda la altura disponible */
+    width: 100%;
+  }
+  
+  /* Estilo para el Canvas, para que ocupe todo el espacio restante */
+  .canvas-3d {
+    flex-grow: 1;  /* Esto permite que el Canvas ocupe todo el espacio restante */
+    align-content: center;
+    width: 100%;   /* Asegura que el Canvas tenga el ancho completo */
+    height: 100vh; /* Usa 100vh para asegurar que ocupe toda la altura de la ventana */
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
