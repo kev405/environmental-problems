@@ -6,6 +6,7 @@ import World from "../pages/world/World.jsx";
 import Home from "../pages/home/home.jsx";
 import Nosotros from "../pages/home/nosotros/nosotros.jsx"; 
 import Introduction from "../pages/water-pollution/Introduction.jsx";
+import WaterAcidification from "../pages/waterAcidification/water_Acidification.jsx";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/water-pollution",
     element: <ProtectedRoute element={<Introduction />} />
+  },
+  {
+    path: "/water-acidification",
+    element: <ProtectedRoute element={<WaterAcidification />} />
   },
 ]);
 

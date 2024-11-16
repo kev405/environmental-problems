@@ -65,6 +65,9 @@ const Home = () => {
                     <button className="menu-button">SOBRE NOSOTROS</button>
                 </Link>
                 <button className="menu-button">PROBLEMAS AMBIENTALES DEL AGUA</button>
+                <Link to="/water-acidification" className="menu-link">
+                    <button className="menu-button">ACIDIFICACIÓN DEL AGUA</button>
+                </Link>
                 <button className="menu-button">EXPERIENCIAS INTERACTIVAS 3D</button>
                 <button className="menu-button">RECURSOS EDUCATIVOS</button>
                 <button className="menu-button">PARTICIPA</button>
