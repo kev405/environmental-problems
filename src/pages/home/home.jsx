@@ -1,11 +1,11 @@
 import React, { useRef, useCallback } from 'react';
-import useAuthStore from "../../stores/use-auth-store";
+import useAuthStore from "../../stores/use-auth-store.js";
 import './Home.css'; // Opcional: estilos personalizados
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Sky from "../../components/Sky.jsx";
-import Turttle from "../../models-jsx/Login/TurttleLogin";
-import Turttle2 from "../../models-jsx/Login/TurttleLogin2";
+import Turttle from "../../models-jsx/Login/TurttleLogin.jsx";
+import Turttle2 from "../../models-jsx/Login/TurttleLogin2.jsx";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
@@ -41,6 +41,14 @@ const Home = () => {
         navigate("/water-pollution");
     };
 
+    const handleClicked2 = () => {
+        navigate("/escasez");
+    };
+
+    const handleClicked3 = () => {
+        navigate("/water-acidification");
+    };
+
     return (
         <div className="home-container">
             <Canvas className="island-canvas">
@@ -71,8 +79,8 @@ const Home = () => {
                     <button className="menu-button">SOBRE NOSOTROS</button>
                 </Link>
                 <button className="menu-button" onClick={handleClicked}>CONTAMINACION DEL AGUA</button>
-                <button className="menu-button">ESCAZES DE AGUA</button>
-                <button className="menu-button">ACIDIFICACION DE LOS OCEANOS</button>
+                <button className="menu-button" onClick={handleClicked2}>ESCAZES DE AGUA</button>
+                <button className="menu-button" onClick={handleClicked3}>ACIDIFICACION DE LOS OCEANOS</button>
                 <button className="menu-button">PARTICIPA</button>
                 <button className="menu-button" onClick={handleLogout}>CERRAR SESION</button>
             </div>

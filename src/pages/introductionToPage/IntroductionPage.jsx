@@ -44,11 +44,11 @@ const Introduction = () => {
     return <p className="loading-text">Cargando...</p>;
   }
 
-  const tittles = [
-    "Introducción",
-    "Sensibilización",
-    "N/A"
-  ];
+  // const tittles = [
+  //   "Introducción",
+  //   "Sensibilización",
+  //   "N/A"
+  // ];
 
   const texts = [
     "Bienvenido a nuestra experiencia 3D sobre los problemas ambientales del agua. El agua, el recurso más esencial para la vida, enfrenta amenazas graves debido a la actividad humana y los efectos del cambio climático. Nuestra página web te invita a explorar los desafíos más críticos que afectan este elemento vital: la escasez de agua, la contaminación que pone en peligro ecosistemas y comunidades, y la alarmante acidificación de los océanos, un fenómeno que amenaza la biodiversidad marina y el equilibrio del planeta.",
@@ -91,7 +91,7 @@ const nextText = () => {
                 {currentTextIndex === 2 && <OceanPollution />}
                 <Html center>
                   <div className="login-container">
-                    <h2>{tittles[currentTextIndex]}</h2>
+                    <h2>BIENVENIDO</h2>
                     <div className="introduction-text">
                       <p>{texts[currentTextIndex]}</p>
                       <div className="button-container">
@@ -102,40 +102,6 @@ const nextText = () => {
                   </div>
                 </Html>
               </>
-            )}
-            {currentTextIndex == 1 && ( // Renderiza el HTML solo si showHtml es true
-            <>
-              <Pollution />
-              <Html center >
-                  <div className="login-container">
-                    <h2>{tittles[currentTextIndex]}</h2>
-                    <div className="introduction-text">
-                      <p>{texts[currentTextIndex]}</p>
-                      <div className="button-container">
-                        <button onClick={prevText}>Anterior</button>
-                        <button onClick={nextText}>Siguiente</button>
-                      </div>
-                    </div>
-                  </div>
-              </Html>
-            </>
-            )}
-            {currentTextIndex == 2 && ( // Renderiza el HTML solo si showHtml es true
-            <>
-              <OceanPollution />
-              <Html center >
-                  <div className="login-container">
-                    <h2>{tittles[currentTextIndex]}</h2>
-                    <div className="introduction-text">
-                      <p>{texts[currentTextIndex]}</p>
-                      <div className="button-container">
-                        <button onClick={prevText}>Anterior</button>
-                        <button onClick={nextText}>Siguiente</button>
-                      </div>
-                    </div>
-                  </div>
-              </Html>
-            </>
             )}
         </Canvas>
     </>

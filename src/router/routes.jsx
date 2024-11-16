@@ -5,8 +5,11 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import World from "../pages/world/World.jsx";
 import Home from "../pages/home/home.jsx";
 import Nosotros from "../pages/home/nosotros/nosotros.jsx"; 
+import  ProEscasez  from "../components/escasez/ProEscasez.jsx";
 import ProblemPollution from "../pages/water-pollution/ProblemPollution.jsx";
-import IntroductionPage from "../pages/introductionToPage/IntroductionPage.jsx";
+import Introduction from "../pages/introductionToPage/IntroductionPage.jsx";
+import WaterAcidification from "../pages/waterAcidification/water_Acidification.jsx";
+
 
 
 const router = createBrowserRouter([
@@ -28,11 +31,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/water-pollution",
-    element: <ProtectedRoute element={<ProblemPollution />} />
+    element: <ProtectedRoute element={<ProblemPollution/>} />
   },
   {
     path: "/intro",
-    element: <ProtectedRoute element={<IntroductionPage />} /> 
+    element: <ProtectedRoute element={<Introduction />} />
+  },
+  {
+    path: "/escasez", // Usar una ruta más clara
+    element: <ProEscasez/> // Esta ruta no está protegida
+  }, {
+    path: "/water-acidification",
+    element: <ProtectedRoute element={<WaterAcidification />} />
   },
 ]);
 
