@@ -13,7 +13,6 @@ export const ProEscasez = () => {
   const [isDivVisible, setIsDivVisible] = useState(false);
   const [isLeft, setIsLeft] = useState(false);
   const [rotationY, setRotationY] = useState(0); // Estado para controlar la rotación
-  const [position, setPosition] = useState([0, 0, 0]); 
   const [isNear, setIsNear] = useState(false);
 
   // Mapeo de teclas
