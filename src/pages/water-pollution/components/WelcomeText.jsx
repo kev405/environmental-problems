@@ -1,14 +1,45 @@
 import { Center, Text, Text3D } from "@react-three/drei";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as THREE from "three";
 
-const WelcomeText = ({ setTargetPosition, setTargetLookAt, handleShowHtml }) => {
+const WelcomeText = ({ setTargetPosition, setTargetLookAt, handleShowHtml, nextText }) => {
   const moveCameraToNewTarget = () => {
     setTargetPosition(new THREE.Vector3(14.326031189977101, 14.303924841543708, 3.3270898092551917));
     setTargetLookAt(new THREE.Vector3(3.4122097168814642, 5.039213209879196, 12.4588383677463));
     handleShowHtml();
     console.log("Cambiando de texto");
   };
+
+  // Manejar los eventos de teclas de flecha para mover la cámara
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      switch (event.key) {
+        case "ArrowUp":
+          moveCameraToNewTarget();
+          nextText();
+          break;
+        case "ArrowDown":
+          setTargetPosition(new THREE.Vector3(-9.445855186052283, 5.831885020952239, -3.950013148400385));
+          setTargetLookAt(new THREE.Vector3(-14.254039362526308, 2.686472104036879, -1.7887087400792328));
+          break;
+        case "ArrowLeft":
+          setTargetPosition(new THREE.Vector3(-9.445855186052283, 5.831885020952239, -3.950013148400385));
+          setTargetLookAt(new THREE.Vector3(-14.254039362526308, 2.686472104036879, -1.7887087400792328));
+          break;
+        case "ArrowRight":
+          moveCameraToNewTarget();
+          nextText();
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [setTargetPosition]);
 
 
   return (
