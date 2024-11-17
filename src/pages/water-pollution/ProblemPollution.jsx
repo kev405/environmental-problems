@@ -57,19 +57,19 @@ const ProblemPollution = () => {
     setCurrentTextIndex((prevIndex) => (prevIndex === texts.length - 1 ? 0 : prevIndex + 1));
   };
 
-  const handleCameraChange = () => {
-    // Obtiene el objetivo actual de la cámara (target) cuando OrbitControls cambia
-    if (controlsRef.current) {
-      console.log(controlsRef);
-    }
-  };
+  // const handleCameraChange = () => {
+  //   // Obtiene el objetivo actual de la cámara (target) cuando OrbitControls cambia
+  //   if (controlsRef.current) {
+  //     console.log(controlsRef);
+  //   }
+  // };
 
   return (
     <>
     <Canvas shadows>
       <DirectionalLightWith position={[10, 10, 0]} intensity={10}/>
       <CameraController targetPosition={targetPosition} targetLookAt={targetLookAt} />
-      <OrbitControls ref={controlsRef} onChange={handleCameraChange} />
+      {/* <OrbitControls ref={controlsRef} onChange={handleCameraChange} /> */}
       <OceanPollution/>
       <Turttle position={[-15, 3, 4]} castShadow />
       <Turttle2 position={[-11, 1, -3]} castShadow />
@@ -92,7 +92,7 @@ const ProblemPollution = () => {
         </Sphere>
       ))}
       <MenuPollution position={[-15, 3, 0]} />
-      <WelcomeText setTargetPosition={setTargetPosition} setTargetLookAt={setTargetLookAt} handleShowHtml={handleShowHtml}/>
+      <WelcomeText setTargetPosition={setTargetPosition} setTargetLookAt={setTargetLookAt} handleShowHtml={handleShowHtml} nextText={nextText}/>
       {showHtml && ( // Renderiza el HTML solo si showHtml es true
           <Html center position={[10,11,24]}>
             <div className="login-container">
