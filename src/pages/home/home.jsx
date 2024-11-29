@@ -6,6 +6,7 @@ import { OrbitControls } from '@react-three/drei';
 import Sky from "../../components/Sky.jsx";
 import Turttle from "../../models-jsx/Login/TurttleLogin.jsx";
 import Turttle2 from "../../models-jsx/Login/TurttleLogin2.jsx";
+import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 
@@ -26,6 +27,7 @@ const RotatingCamera = () => {
 };
 
 const Home = () => {
+    const navigate = useNavigate();
 
     const { logout } =
     useAuthStore();
@@ -34,6 +36,18 @@ const Home = () => {
         console.log("Cerrando sesion");
         logout();
     }, [logout]);
+
+    const handleClicked = () => {
+        navigate("/water-pollution");
+    };
+
+    const handleClicked2 = () => {
+        navigate("/escasez");
+    };
+
+    const handleClicked3 = () => {
+        navigate("/water-acidification");
+    };
 
     return (
         <div className="home-container">
@@ -64,12 +78,9 @@ const Home = () => {
                 <Link to="/nosotros" className="menu-link">
                     <button className="menu-button">SOBRE NOSOTROS</button>
                 </Link>
-                <button className="menu-button">PROBLEMAS AMBIENTALES DEL AGUA</button>
-                <Link to="/water-acidification" className="menu-link">
-                    <button className="menu-button">ACIDIFICACIÓN DEL AGUA</button>
-                </Link>
-                <button className="menu-button">EXPERIENCIAS INTERACTIVAS 3D</button>
-                <button className="menu-button">RECURSOS EDUCATIVOS</button>
+                <button className="menu-button" onClick={handleClicked}>CONTAMINACION DEL AGUA</button>
+                <button className="menu-button" onClick={handleClicked2}>ESCASEZ DE AGUA</button>
+                <button className="menu-button" onClick={handleClicked3}>ACIDIFICACION DE LOS OCEANOS</button>
                 <button className="menu-button">PARTICIPA</button>
                 <button className="menu-button" onClick={handleLogout}>CERRAR SESION</button>
             </div>
