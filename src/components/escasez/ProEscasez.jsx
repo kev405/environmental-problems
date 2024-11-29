@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import React, { useEffect, useMemo, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, Html } from "@react-three/drei";
+import { Environment, OrbitControls, Html, Text3D } from "@react-three/drei";
 import Escasez from "./Escasez";
 
 const controls = {
@@ -66,7 +66,6 @@ export const ProEscasez = () => {
     setIsNear((prev) => !prev); // Alternar entre cerca y lejos
   };
 
-
   const handleButtonClick = () => {
     setIsDivVisible((prev) => !prev);
     setIsLeft(true);
@@ -77,32 +76,38 @@ export const ProEscasez = () => {
     setIsLeft(false);
   };
 
+  const handleButtonClickSoluciones = () => {
+    setIsDivVisible((prev) => !prev);
+    setIsLeft("soluciones"); // Cambiar el estado a "soluciones"
+  };
+
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
       <Canvas camera={{ position: [0, 5, 15] }}>
         <ambientLight intensity={0.9} />
         <directionalLight position={[10, 10, 10]} intensity={5} />
 
-        <group rotation-y={rotationY} position={[0, 0, isNear ? 5 : 0]} onClick={handleModelClick}>
+        <group
+          rotation-y={rotationY}
+          position={[0, 0, isNear ? 5 : 0]}
+          onClick={handleModelClick}
+        >
           <Escasez />
         </group>
-
-        <Html position={[0, 8, 0]} center>
-          <h1
-            style={{
-              color: "#406D66",
-              letterSpacing: "2px",
-              fontFamily: "Anton",
-              fontSize: "3rem",
-              textAlign: "center",
-              whiteSpace: "nowrap",
-              WebkitTextStroke: "1px #bbb",
-            }}
-          >
-            ESCASEZ DEL AGUA
-          </h1>
-        </Html>
-
+        <Text3D
+          position={[-6, 7, 0]}
+          font="/fonts/blue-ocean.json"
+          bevelEnabled
+          bevelSize={0.02}
+          bevelThickness={0.1}
+          height={0.5}
+          lineHeight={0.75}
+          letterSpacing={0.05}
+        >
+          ESCASEZ DEL AGUA
+          <meshStandardMaterial color="#3e645e" />
+        </Text3D>
+        {/* Botón para la introducción */}
         <Html position={[-10, 7, 0]} center>
           <button
             style={{
@@ -124,7 +129,7 @@ export const ProEscasez = () => {
             Introducción
           </button>
         </Html>
-
+        {/* Botón para la sensibilización */}
         <Html position={[10, 7, 0]} center>
           <button
             style={{
@@ -144,6 +149,28 @@ export const ProEscasez = () => {
             onClick={handleButtonClickDerecho}
           >
             Sensibilización
+          </button>
+        </Html>
+        {/* Botón para las soluciones */}
+        <Html position={[0, 5, 0]} center>
+          <button
+            style={{
+              fontSize: "1.5rem",
+              letterSpacing: "2px",
+              fontFamily: "Wix Madefor Text",
+              fontWeight: "bold",
+              padding: "0.5rem 2rem",
+              borderRadius: "15px",
+              border: "2px solid #406D66",
+              backgroundColor: "rgba(255, 255, 255, 0.6)",
+              color: "#406D66",
+              cursor: "pointer",
+              outline: "none",
+              transition: "all 0.3s ease",
+            }}
+            onClick={handleButtonClickSoluciones}
+          >
+            Soluciones
           </button>
         </Html>
 
@@ -173,8 +200,49 @@ export const ProEscasez = () => {
                 lineHeight: "1.6",
               }}
             >
-              {isLeft ? (
+              {isLeft === "soluciones" ? (
                 <div>
+                  {/* Soluciones */}
+                  <h2
+                    style={{
+                      color: "#406D66",
+                      fontSize: "1.5rem",
+                      marginBottom: "0.5rem",
+                      fontFamily: "Wix Madefor Text",
+                      textAlign: "center",
+                    }}
+                  >
+                    Soluciones a la escasez de agua
+                  </h2>
+                  <ul>
+                    <li>
+                      <strong>Uso eficiente del agua:</strong> Promover
+                      tecnologías y prácticas que optimicen el uso del agua,
+                      como sistemas de riego eficientes y dispositivos de ahorro
+                      en el hogar.
+                    </li>
+                    <li>
+                      <strong>Reciclaje y reutilización:</strong> Fomentar el
+                      reciclaje del agua a través de sistemas que permitan su
+                      reutilización en diferentes sectores, como la agricultura
+                      y la industria.
+                    </li>
+                    <li>
+                      <strong>Protección de fuentes de agua:</strong> Invertir
+                      en la preservación de los ecosistemas acuáticos,
+                      protegiendo los ríos, lagos y acuíferos de la
+                      contaminación.
+                    </li>
+                    <li>
+                      <strong>Educación y concientización:</strong> Enseñar a la
+                      población sobre la importancia de conservar el agua,
+                      promover prácticas responsables y cambiar hábitos diarios.
+                    </li>
+                  </ul>
+                </div>
+              ) : isLeft ? (
+                <div>
+                  {/* Introducción */}
                   <h2
                     style={{
                       color: "#406D66",
@@ -228,6 +296,7 @@ export const ProEscasez = () => {
                 </div>
               ) : (
                 <div>
+                  {/* Sensibilización */}
                   <h2
                     style={{
                       color: "#406D66",
