@@ -79,7 +79,7 @@ const Home = () => {
                     <button className="menu-button">SOBRE NOSOTROS</button>
                 </Link>
                 <button className="menu-button" onClick={handleClicked}>CONTAMINACION DEL AGUA</button>
-                <button className="menu-button" onClick={handleClicked2}>ESCAZES DE AGUA</button>
+                <button className="menu-button" onClick={handleClicked2}>ESCASEZ DE AGUA</button>
                 <button className="menu-button" onClick={handleClicked3}>ACIDIFICACION DE LOS OCEANOS</button>
                 <button className="menu-button">PARTICIPA</button>
                 <button className="menu-button" onClick={handleLogout}>CERRAR SESION</button>
