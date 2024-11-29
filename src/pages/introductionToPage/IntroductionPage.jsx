@@ -95,8 +95,8 @@ const nextText = () => {
                     <div className="introduction-text">
                       <p>{texts[currentTextIndex]}</p>
                       <div className="button-container">
-                        <button onClick={prevText}>Anterior</button>
-                        <button onClick={nextText}>Siguiente</button>
+                        <button className="styled-button" onClick={prevText}>Anterior</button>
+                        <button className="styled-button" onClick={nextText}>Siguiente</button>
                       </div>
                     </div>
                   </div>

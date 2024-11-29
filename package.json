@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/cannon": "^4.0.0",
     "@react-three/drei": "^9.112.0",
     "@react-three/fiber": "^8.17.6",
     "@types/three": "^0.167.2",
