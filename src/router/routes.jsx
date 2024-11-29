@@ -11,7 +11,6 @@ import Introduction from "../pages/introductionToPage/IntroductionPage.jsx";
 import WaterAcidification from "../pages/waterAcidification/water_Acidification.jsx";
 
 
-
 const router = createBrowserRouter([
   {
     path: "/",
