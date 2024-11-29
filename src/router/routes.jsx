@@ -8,8 +8,6 @@ import Nosotros from "../pages/home/nosotros/nosotros.jsx";
 import  ProEscasez  from "../components/escasez/ProEscasez.jsx";
 import Introduction from "../pages/water-pollution/Introduction.jsx";
 import WaterAcidification from "../pages/waterAcidification/water_Acidification.jsx";
-import Fi_escasez from "../components/escasez/Fi_escasez.jsx";
-
 
 
 const router = createBrowserRouter([
@@ -39,10 +37,6 @@ const router = createBrowserRouter([
   }, {
     path: "/water-acidification",
     element: <ProtectedRoute element={<WaterAcidification />} />
-  },
-  {
-    path: "/fisicas", // Usar una ruta más clara
-    element: <Fi_escasez/> // Esta ruta no está protegida
   },
 ]);
 

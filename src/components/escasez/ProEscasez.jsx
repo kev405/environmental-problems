@@ -113,7 +113,7 @@ export const ProEscasez = () => {
         <ambientLight intensity={0.9} />
         <directionalLight position={[10, 10, 10]} intensity={5} />
 
-        <Physics gravity={[0, -9.81, 0]}>
+        <Physics gravity={[0, -2, 0]}>
           <group
             rotation-y={rotationY}
             position={[0, 0, isNear ? 5 : 0]}
@@ -121,10 +121,10 @@ export const ProEscasez = () => {
           >
             <Escasez />
           </group>
-
-          <FallingText text="Agua" position={[0, 10, 0]} />
-          <FallingText text="Escasez" position={[2, 12, 0]} />
-          <FallingText text="Conservación" position={[-2, 14, 0]} />
+          <FallingText text="Conservación!" position={[-2, 16, 0]} />
+          <FallingText text="Reutilización!" position={[-2, 15, 0]} />
+          <FallingText text="Sensibilización!" position={[-2, 14, 0]} />
+          <FallingText text="Educación!" position={[-2, 13, 0]} />
         </Physics>
 
         <Text3D
