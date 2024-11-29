@@ -38,13 +38,13 @@ const ProblemPollution = () => {
   const tittles = [
     "Introducción",
     "Sensibilización",
-    "N/A"
+    "Solución"
   ];
 
   const texts = [
     "La contaminación del agua es una crisis mundial en aumento que afecta nuestras fuentes de agua dulce esenciales para el consumo humano y la biodiversidad. Diversos contaminantes, desde plásticos hasta sustancias químicas como los PFAS, se infiltran en ríos, lagos y océanos, amenazando la salud humana y la vida silvestre. Estudios recientes han detectado microcontaminantes orgánicos en áreas protegidas, evidenciando la magnitud del problema. Además, el cambio climático intensifica estos desafíos, alterando el ciclo natural del agua y exacerbando la contaminación. Es imperativo implementar medidas efectivas para proteger y preservar nuestros recursos hídricos.",
     "La contaminación del agua es una realidad alarmante que afecta a todas las formas de vida en el planeta. Cada día, nuestras fuentes de agua dulce—vitales para el consumo humano, la agricultura y la biodiversidad—son contaminadas por plásticos, productos químicos y desechos industriales. La presencia de microcontaminantes en áreas protegidas y los efectos del cambio climático solo agravan este problema, intensificando la escasez de agua limpia. Para asegurar un futuro sostenible, debemos actuar hoy. Reducir el uso de plásticos, evitar el desperdicio de agua y exigir prácticas responsables a las industrias son pasos esenciales para proteger nuestros recursos hídricos y garantizar que futuras generaciones también puedan disfrutarlos.",
-    "Frente a esta situación, es crucial implementar regulaciones ambientales más estrictas..."
+    "Para reducir la contaminación del agua, es clave implementar tratamientos eficientes de aguas residuales, disminuir el uso de plásticos para evitar su llegada a los cuerpos de agua, y promover prácticas agrícolas sostenibles que reduzcan el uso de químicos contaminantes. Además, es necesario controlar estrictamente los vertidos industriales y educar a la comunidad sobre la importancia del cuidado del agua y cómo pueden contribuir individualmente."
   ];
 
   // Función para cambiar al texto anterior
