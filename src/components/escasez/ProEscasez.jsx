@@ -2,11 +2,37 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, Html, Text3D } from "@react-three/drei";
+import { Physics, useBox } from "@react-three/cannon";
 import Escasez from "./Escasez";
 
 const controls = {
   left: "left",
   right: "right",
+};
+
+const FallingText = ({ text, position }) => {
+  const [ref] = useBox(() => ({
+    mass: 3,
+    position,
+  }));
+
+  return (
+    <Text3D
+      ref={ref}
+      font="/fonts/blue-ocean.json"
+      size={0.5}
+      height={0.2}
+      curveSegments={12}
+      bevelEnabled
+      bevelThickness={0.02}
+      bevelSize={0.02}
+      bevelOffset={0}
+      bevelSegments={5}
+    >
+      {text}
+      <meshStandardMaterial color="#3e645e" />
+    </Text3D>
+  );
 };
 
 export const ProEscasez = () => {
@@ -87,13 +113,20 @@ export const ProEscasez = () => {
         <ambientLight intensity={0.9} />
         <directionalLight position={[10, 10, 10]} intensity={5} />
 
-        <group
-          rotation-y={rotationY}
-          position={[0, 0, isNear ? 5 : 0]}
-          onClick={handleModelClick}
-        >
-          <Escasez />
-        </group>
+        <Physics gravity={[0, -9.81, 0]}>
+          <group
+            rotation-y={rotationY}
+            position={[0, 0, isNear ? 5 : 0]}
+            onClick={handleModelClick}
+          >
+            <Escasez />
+          </group>
+
+          <FallingText text="Agua" position={[0, 10, 0]} />
+          <FallingText text="Escasez" position={[2, 12, 0]} />
+          <FallingText text="Conservación" position={[-2, 14, 0]} />
+        </Physics>
+
         <Text3D
           position={[-6, 7, 0]}
           font="/fonts/blue-ocean.json"
@@ -107,6 +140,7 @@ export const ProEscasez = () => {
           ESCASEZ DEL AGUA
           <meshStandardMaterial color="#3e645e" />
         </Text3D>
+
         {/* Botón para la introducción */}
         <Html position={[-10, 7, 0]} center>
           <button
@@ -129,6 +163,7 @@ export const ProEscasez = () => {
             Introducción
           </button>
         </Html>
+
         {/* Botón para la sensibilización */}
         <Html position={[10, 7, 0]} center>
           <button
@@ -151,8 +186,9 @@ export const ProEscasez = () => {
             Sensibilización
           </button>
         </Html>
+
         {/* Botón para las soluciones */}
-        <Html position={[0, 5, 0]} center>
+        {/* <Html position={[0, 5, 0]} center>
           <button
             style={{
               fontSize: "1.5rem",
@@ -172,7 +208,7 @@ export const ProEscasez = () => {
           >
             Soluciones
           </button>
-        </Html>
+        </Html> */}
 
         <Html position={[0, 0, 0]} center>
           <div
