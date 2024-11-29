@@ -66,3 +66,36 @@
 .menu-button:hover {
     background-color: #94f0dd; 
 }
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.styled-button {
+    background-color: #5BC7B6; 
+    color: white; 
+    border: none; 
+    border-radius: 20px; 
+    padding: 12px 20px; /* Aumentado el tamaño de padding */
+    font-size: 16px; /* Aumentado tamaño de fuente */
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.3s; 
+    font-family: 'Wix Madefor Text', sans-serif;
+    border: 3px solid #406D66;
+    width: 48%; /* Los botones ocupan el 48% del ancho de su contenedor */
+}
+
+.styled-button:hover {
+    background-color: #94f0dd;
+    transform: translateY(-3px); /* Efecto de elevación */
+}
+
+.styled-button:focus {
+    outline: none; /* Elimina el borde de enfoque */
+}
+
+.styled-button:active {
+    transform: translateY(1px); /* Efecto de presionar el botón */
+}
