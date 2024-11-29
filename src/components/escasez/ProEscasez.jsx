@@ -188,7 +188,7 @@ export const ProEscasez = () => {
         </Html>
 
         {/* Botón para las soluciones */}
-        {/* <Html position={[0, 5, 0]} center>
+        <Html position={[0, 5, 0]} center>
           <button
             style={{
               fontSize: "1.5rem",
@@ -208,7 +208,7 @@ export const ProEscasez = () => {
           >
             Soluciones
           </button>
-        </Html> */}
+        </Html>
 
         <Html position={[0, 0, 0]} center>
           <div
