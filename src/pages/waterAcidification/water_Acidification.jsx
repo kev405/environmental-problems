@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import WaterComponent from "./components/waterComponent";
+import WaterComponent from "./components/WaterComponent";
 import { Physics, useBox, useSphere } from '@react-three/cannon';
 
 const RainDrop = ({ position, onCollision, removeDrop, color }) => {

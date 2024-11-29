@@ -51,10 +51,11 @@ const Introduction = () => {
   // ];
 
   const texts = [
-    "Bienvenido a nuestra experiencia 3D sobre los problemas ambientales del agua. El agua, el recurso más esencial para la vida, enfrenta amenazas graves debido a la actividad humana y los efectos del cambio climático. Nuestra página web te invita a explorar los desafíos más críticos que afectan este elemento vital: la escasez de agua, la contaminación que pone en peligro ecosistemas y comunidades, y la alarmante acidificación de los océanos, un fenómeno que amenaza la biodiversidad marina y el equilibrio del planeta.",
-    "A través de modelos interactivos en 3D, te sumergirás en una experiencia visual y educativa que te permitirá comprender cómo estos problemas impactan nuestro mundo. Cada modelo ha sido diseñado para conectar la información científica con la realidad cotidiana, ayudándote a visualizar los efectos y las posibles soluciones.",
-    "El cambio comienza con el conocimiento, y tú puedes ser parte de la solución. ¡Acompáñanos en este viaje interactivo y descubre cómo podemos cuidar el agua, la vida y nuestro planeta!"
-  ];
+    "Bienvenido a nuestra experiencia 3D sobre los problemas ambientales del agua. La contaminación del agua es uno de los problemas ambientales más graves que enfrenta el mundo. Desperdicios industriales, productos químicos y plásticos están alterando la calidad de ríos, lagos y océanos, afectando tanto a la fauna acuática como a las comunidades humanas que dependen de estos recursos. En nuestra experiencia, exploraremos cómo estos contaminantes dañan los ecosistemas y qué acciones podemos tomar para mitigar este grave problema.",
+    "La escasez de agua es una crisis creciente que afecta a millones de personas alrededor del mundo. El uso excesivo, la mala gestión de los recursos y los efectos del cambio climático están reduciendo el acceso al agua potable. En esta sección, descubrirás cómo la falta de agua impacta a diversas regiones y cómo la conservación y el uso responsable pueden marcar la diferencia.",
+    "La acidificación de los océanos es otro desafío emergente que está afectando a los ecosistemas marinos. El aumento de los niveles de CO2 en la atmósfera está disuelto en el agua del mar, alterando su química y poniendo en riesgo la vida marina. A través de nuestra experiencia, aprenderás cómo este fenómeno amenaza la biodiversidad oceánica y qué podemos hacer para frenar su avance."
+];
+
 
   const prevText = () => {
   const newIndex = (currentTextIndex - 1 + texts.length) % texts.length;
