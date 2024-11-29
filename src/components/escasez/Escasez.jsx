@@ -1,9 +1,7 @@
-/*
-Title: Water Refraction with Reflection
-*/
-
+/* eslint-disable react/no-unknown-property */
 import React, { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import { useBox, Debug } from "@react-three/cannon";
 
 export function Escasez(props) {
   const group = useRef();
@@ -11,6 +9,14 @@ export function Escasez(props) {
     "/models-3d/escasezmov.gltf"
   );
   const { actions } = useAnimations(animations, group);
+
+  // Configurar el cuerpo rígido para el modelo Escasez
+  const [ref] = useBox(() => ({
+    mass: 0, // Estático
+    position: [0, 0, 0],
+    args: [10, 0.1, 0.1], // Ajusta el tamaño del cuerpo físico según el modelo
+  }));
+
   useEffect(() => {
     if (actions) {
       const animationName = Object.keys(actions)[0]; // Obtiene el nombre de la primera animación
@@ -22,93 +28,96 @@ export function Escasez(props) {
       }
     }
   }, [actions]); // Se asegura de que se ejecute cuando `actions` esté disponible
+
   return (
-    <group ref={group} {...props} dispose={null}>
-      <group name="Sketchfab_Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
-          <group name="root">
-            <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
-              <group name="Landscape_0">
-                <mesh
-                  name="Object_4"
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_4.geometry}
-                  material={materials["Material.001"]}
-                />
-                <mesh
-                  name="Object_5"
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_5.geometry}
-                  material={materials["Material.001"]}
-                />
-                <mesh
-                  name="Object_6"
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_6.geometry}
-                  material={materials["Material.001"]}
-                />
-                <mesh
-                  name="Object_7"
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_7.geometry}
-                  material={materials["Material.001"]}
-                />
-                <mesh
-                  name="Object_8"
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_8.geometry}
-                  material={materials["Material.001"]}
-                />
-                <mesh
-                  name="Object_9"
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_9.geometry}
-                  material={materials["Material.001"]}
-                />
-                <mesh
-                  name="Object_10"
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_10.geometry}
-                  material={materials["Material.001"]}
-                />
-                <mesh
-                  name="Object_11"
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_11.geometry}
-                  material={materials["Material.001"]}
-                />
-              </group>
-              <group name="Water_1_1" position={[0, 0.472, 0]} scale={6.693}>
-                <mesh
-                  name="Object_13"
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_13.geometry}
-                  material={materials.Water_1}
-                />
-              </group>
-              <group name="Water_2_2" position={[0, 0.47, 0]} scale={6.693}>
-                <mesh
-                  name="Object_15"
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_15.geometry}
-                  material={materials.Water_2}
-                />
+    <Debug color="red">
+      <group ref={group} {...props} dispose={null}>
+        <group ref={ref} name="Sketchfab_Scene">
+          <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+            <group name="root">
+              <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
+                <group name="Landscape_0">
+                  <mesh
+                    name="Object_4"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_4.geometry}
+                    material={materials["Material.001"]}
+                  />
+                  <mesh
+                    name="Object_5"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_5.geometry}
+                    material={materials["Material.001"]}
+                  />
+                  <mesh
+                    name="Object_6"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_6.geometry}
+                    material={materials["Material.001"]}
+                  />
+                  <mesh
+                    name="Object_7"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_7.geometry}
+                    material={materials["Material.001"]}
+                  />
+                  <mesh
+                    name="Object_8"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_8.geometry}
+                    material={materials["Material.001"]}
+                  />
+                  <mesh
+                    name="Object_9"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_9.geometry}
+                    material={materials["Material.001"]}
+                  />
+                  <mesh
+                    name="Object_10"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_10.geometry}
+                    material={materials["Material.001"]}
+                  />
+                  <mesh
+                    name="Object_11"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_11.geometry}
+                    material={materials["Material.001"]}
+                  />
+                </group>
+                <group name="Water_1_1" position={[0, 0.472, 0]} scale={6.693}>
+                  <mesh
+                    name="Object_13"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_13.geometry}
+                    material={materials.Water_1}
+                  />
+                </group>
+                <group name="Water_2_2" position={[0, 0.47, 0]} scale={6.693}>
+                  <mesh
+                    name="Object_15"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_15.geometry}
+                    material={materials.Water_2}
+                  />
+                </group>
               </group>
             </group>
           </group>
         </group>
       </group>
-    </group>
+    </Debug>
   );
 }
 
