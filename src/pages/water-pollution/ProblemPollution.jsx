@@ -11,12 +11,14 @@ import DirectionalLightWith from "./components/DirectionalLigthWith";
 import * as THREE from "three";
 import CameraController from "../controls/CameraControls";
 import WelcomeText from "./components/WelcomeText";
+import { enviarPuntaje, obtenerPuntaje } from "../../../firebase.config.js";
 
 const ProblemPollution = () => {
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(-9.445855186052283, 5.831885020952239, -3.950013148400385));
   const [targetLookAt, setTargetLookAt] = useState(new THREE.Vector3(-14.254039362526308, 2.686472104036879, -1.7887087400792328));
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [showHtml, setShowHtml] = useState(false);
+  const [puntaje, setPuntaje] = useState(null);
   const controlsRef = useRef();
 
   // const moveCameraToNewTarget = () => {
@@ -28,7 +30,7 @@ const ProblemPollution = () => {
     setShowHtml(true);
   };
 
-  const { loading } =
+  const { loading, user } =
     useAuthStore();
 
   if (loading) {
@@ -40,6 +42,22 @@ const ProblemPollution = () => {
     "Sensibilización",
     "Solución"
   ];
+
+  const manejarPuntaje = async () => {
+    const score = await obtenerPuntaje(user.email);
+    if (score !== null) {
+      setPuntaje(score);
+    }
+  };
+
+  const enviarNuevoPuntaje = async () => {
+    await enviarPuntaje(user.email, 4);
+    manejarPuntaje();
+  }
+
+  const scoreUser = () => {
+    console.log("Puntaje: ", puntaje);
+  };
 
   const texts = [
     "La contaminación del agua es una crisis mundial en aumento que afecta nuestras fuentes de agua dulce esenciales para el consumo humano y la biodiversidad. Diversos contaminantes, desde plásticos hasta sustancias químicas como los PFAS, se infiltran en ríos, lagos y océanos, amenazando la salud humana y la vida silvestre. Estudios recientes han detectado microcontaminantes orgánicos en áreas protegidas, evidenciando la magnitud del problema. Además, el cambio climático intensifica estos desafíos, alterando el ciclo natural del agua y exacerbando la contaminación. Es imperativo implementar medidas efectivas para proteger y preservar nuestros recursos hídricos.",
