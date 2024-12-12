@@ -1,30 +1,45 @@
-import React from 'react';
-import useAuthStore from '../../stores/use-auth-store';
-
-// Define your Zustand store
-
+import React from "react";
+import useAuthStore from "../../stores/use-auth-store";
+import "./dataTable.css"; // Importa el archivo CSS que contiene los estilos
 
 const DataTable = () => {
-    const { scores } = useAuthStore();
+  const { scores } = useAuthStore();
 
-    return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                {scores.map((item, index) => (
-                    <tr key={index}>
-                        <td>{item.email}</td>
-                        <td>{item.score}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    );
+  return (
+    <div className="home-container">
+      <h1 className="title-header">PUNTUACIONES</h1>
+      <table className="data-table">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>prueba1</td>
+            <td>prueba2</td>
+          </tr>
+          <tr>
+            <td>prueba1</td>
+            <td>prueba2</td>
+          </tr>
+          <tr>
+            <td>prueba1</td>
+            <td>prueba2</td>
+          </tr>
+          <tr>
+            <td>prueba1</td>
+            <td>prueba2</td>
+          </tr>
+          <tr>
+            <td>prueba1</td>
+            <td>prueba2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default DataTable;
