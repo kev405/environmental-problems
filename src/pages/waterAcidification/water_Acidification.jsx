@@ -1,10 +1,11 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, PositionalAudio } from '@react-three/drei';
 import WaterComponent from "./components/WaterComponent";
 import { Physics, useBox, useSphere } from '@react-three/cannon';
 
 const RainDrop = ({ position, onCollision, removeDrop, color }) => {
+
     const [ref] = useSphere(() => ({
         mass: 1,
         position,
@@ -37,6 +38,8 @@ const RainDrop = ({ position, onCollision, removeDrop, color }) => {
         </mesh>
     );
 };
+
+
 
 const Ground = () => {
     const [ref] = useBox(() => ({
@@ -112,6 +115,13 @@ const Rain = ({ rainColor }) => {
 const water_Acidification = () => {
     const [rainColor, setRainColor] = useState("#87CEEB"); // Color inicial azul
 
+    const audioRef = useRef();
+
+    const handleAudio = useCallback(() => {
+        audioRef.current.play();
+        audioRef.current.setVolume(10);
+    }, []);
+
     // Función para cambiar el color de la lluvia
     const toggleRainColor = () => {
         setRainColor(rainColor === "#87CEEB" ? "#BF0CF0" : "#87CEEB");
@@ -120,7 +130,8 @@ const water_Acidification = () => {
     return (
         <div style={{ position: 'relative', height: '100vh', width: '100vw' }}>
             {/* Canvas que ocupa toda la pantalla */}
-            <Canvas camera={{ position: [2, 5, 10], fov: 100 }} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+            <Canvas camera={{ position: [2, 5, 10], fov: 100 }} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                    onClick={handleAudio}>
                 <ambientLight intensity={0.2} />
                 <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
                 <OrbitControls enableZoom={false} />
@@ -129,6 +140,9 @@ const water_Acidification = () => {
                     <Ground />
                     <Rain rainColor={rainColor} />
                 </Physics>
+                <group position={[2, 5, 10]} position-y={10} scale={8}>
+                    <PositionalAudio ref={audioRef} loop url="/sounds/rain.mp3" distance={5}/>
+                </group>
             </Canvas>
 
             {/* Botón flotante encima del canvas */}
