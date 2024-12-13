@@ -178,6 +178,7 @@ export const ProEscasez = () => {
               cursor: "pointer",
               outline: "none",
               transition: "all 0.3s ease",
+              zIndex:-1
             }}
             onClick={handleButtonClickDerecho}
           >
@@ -206,30 +207,6 @@ export const ProEscasez = () => {
             Soluciones
           </button>
         </Html>
-
-        {/* Botón para las soluciones */}
-        <Html position={[0, 5, 0]} center>
-          <button
-            style={{
-              fontSize: "1.5rem",
-              letterSpacing: "2px",
-              fontFamily: "Wix Madefor Text",
-              fontWeight: "bold",
-              padding: "0.5rem 2rem",
-              borderRadius: "15px",
-              border: "2px solid #406D66",
-              backgroundColor: "rgba(255, 255, 255, 0.6)",
-              color: "#406D66",
-              cursor: "pointer",
-              outline: "none",
-              transition: "all 0.3s ease",
-            }}
-            onClick={handleButtonClickSoluciones}
-          >
-            Soluciones
-          </button>
-        </Html>
-
         <Html position={[0, 0, 0]} center>
           <div
             style={{
@@ -411,6 +388,30 @@ export const ProEscasez = () => {
             </div>
           </div>
         </Html>
+        {/* Video*/}
+        <Html position={[25, 0, 0]} center>
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: "2rem",
+              transform: "translateY(-50%)",
+              width: "400px",
+              backgroundColor: "#406D66",
+              padding: "1rem",
+              borderRadius: "10px",
+              textAlign: "center",
+              fontFamily: "Wix Madefor Text",
+            }}
+          >
+            <h2 style={{ color: "#FFFFFF" }}>Video Informativo</h2>
+            <video
+              src="src/components/escasez/video/video.mp4"
+              controls
+              style={{ width: "100%", borderRadius: "10px", marginTop: "1rem" }}
+            />
+          </div>
+        </Html>
 
         <OrbitControls enablePan={true} enableZoom={true} />
 
@@ -419,6 +420,36 @@ export const ProEscasez = () => {
           background={true}
         />
       </Canvas>
+      {/*instrucciones*/}
+      <div
+        style={{
+          width: "300px",
+          padding: "1rem",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          position: "absolute",
+          top: "20px",
+          left: "20px", 
+          borderRadius: "10px",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
+          fontFamily: "Wix Madefor Text",
+        }}
+      >
+        <h3 style={{ color: "#406D66", textAlign: "center" }}>Instrucciones</h3>
+        <ul>
+          <li>
+            Usa las teclas de flecha izquierda/derecha y mira que sucede con el
+            modelo 3D.
+          </li>
+          <li>
+            Usa la ruedita del mouse y mira que sucede con el
+            modelo 3D.
+          </li>
+          <li>
+            Haz clic en los botones para obtener más información sobre la
+            escasez de agua.
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
