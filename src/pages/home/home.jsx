@@ -13,6 +13,7 @@ import UserDAO from "../../daos/UserDAO.js";
 const RotatingCamera = () => {
   const cameraRef = useRef();
 
+
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
     // Rota la cámara horizontalmente alrededor del eje Y
@@ -29,12 +30,13 @@ const RotatingCamera = () => {
 const Home = () => {
   const navigate = useNavigate();
   const { setScores, setRewards } = useAuthStore();
+  const {user} = useAuthStore();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await UserDAO.getAllScores();
-        const dataRewards = await UserDAO.getRewardById("prueba@gmail.com");
+        const dataRewards = await UserDAO.getRewardById(user.email);
         const { rewards } = dataRewards.data;
 
         setRewards(rewards);
@@ -77,7 +79,7 @@ const Home = () => {
   }
 
   const handleClicked6 = () => {
-    navigate("/form");
+    navigate("/quiz");
   }
 
 
@@ -127,7 +129,7 @@ const Home = () => {
           MIS RECOMPENSAS
         </button>
         <button className="menu-button" onClick={handleClicked6}>
-          FORMULARIO
+          QUIZ
         </button>
         <button className="menu-button" onClick={handleLogout}>
           CERRAR SESION

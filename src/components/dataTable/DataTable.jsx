@@ -1,9 +1,10 @@
 import React from "react";
 import useAuthStore from "../../stores/use-auth-store";
-import "./dataTable.css"; // Importa el archivo CSS que contiene los estilos
+import "./DataTable.css"; // Importa el archivo CSS que contiene los estilos
 
 const DataTable = () => {
   const { scores } = useAuthStore();
+  console.log(scores);
 
   return (
     <div className="home-container">
@@ -16,26 +17,12 @@ const DataTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>prueba1</td>
-            <td>prueba2</td>
+        {scores && scores.map((score, index) => (
+          <tr key={index}>
+            <td>{score.email}</td>
+            <td>{score.score}</td>
           </tr>
-          <tr>
-            <td>prueba1</td>
-            <td>prueba2</td>
-          </tr>
-          <tr>
-            <td>prueba1</td>
-            <td>prueba2</td>
-          </tr>
-          <tr>
-            <td>prueba1</td>
-            <td>prueba2</td>
-          </tr>
-          <tr>
-            <td>prueba1</td>
-            <td>prueba2</td>
-          </tr>
+        ))}
         </tbody>
       </table>
     </div>
