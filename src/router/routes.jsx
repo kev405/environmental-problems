@@ -12,7 +12,7 @@ import WaterAcidification from "../pages/waterAcidification/water_Acidification.
 import DataTable from "../components/dataTable/DataTable.jsx";
 import Form from "../components/form/Form.jsx";
 import Reward from "../components/reward/reward.jsx";
-import Quiz from "../components/quiz/Quiz.jsx";
+import Question from "../pages/Questions/Question.jsx";
 
 const router = createBrowserRouter([
   {
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/quiz",
-    element: <ProtectedRoute element={<Quiz />} />,
+    element: <ProtectedRoute element={<Question />} />,
   },
 ]);
 
