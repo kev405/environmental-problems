@@ -165,7 +165,7 @@ export const ProEscasez = () => {
         </Physics>
 
         <Text3D
-          position={[-6, 7, 0]}
+          position={[-6, 20, 0]}
           font="/fonts/blue-ocean.json"
           bevelEnabled
           bevelSize={0.02}

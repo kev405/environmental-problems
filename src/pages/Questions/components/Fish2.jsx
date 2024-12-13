@@ -23,7 +23,7 @@ const Fish1 = ({ initialPosition, ...props }) => {
 
     useEffect(() => {
         const sideLength = 20; // Longitud de los lados del cuadrado
-        const speed = 0.5; // Velocidad de movimiento
+        const speed = 0.09; // Velocidad de movimiento
         let direction = 0; // Dirección actual (0: derecha, 1: abajo, 2: izquierda, 3: arriba)
         let traveled = 0; // Distancia recorrida en la dirección actual
         let x = -sideLength / 2, z = -sideLength / 2; // Posición inicial

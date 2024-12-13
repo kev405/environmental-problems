@@ -19,6 +19,7 @@ const DataTable = () => {
         <tbody>
         {scores && scores.map((score, index) => (
           <tr key={index}>
+            <td>{index + 1}</td> {/* Muestra la posición (índice + 1 para iniciar desde 1) */}
             <td>{score.email}</td>
             <td>{score.score}</td>
           </tr>

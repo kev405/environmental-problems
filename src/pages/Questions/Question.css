@@ -1,58 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 body {
-    cursor: url('/images/insignias/caña.png') 24 24, auto; /* El segundo valor (16 16) es el tamaño del hotspot del puntero */
+  cursor: url("/images/insignias/caña.png") 24 24, auto; /* El segundo valor (16 16) es el tamaño del hotspot del puntero */
+  font-family: "Wix Madefor Text", sans-serif;
 }
 
 /* Estilo para la ventana emergente (popup) */
 .quiz-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Asegura que el popup esté por encima de la escena 3D */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que el popup esté por encima de la escena 3D */
+}
+canvas {
+    z-index: 1; /* Asegura que el modelo 3D esté detrás del popup */
+  }
+
+h1{
+    font-size: 70px;
+    font-family: "Anton", sans-serif;
+    letter-spacing: 3px;
+    color: #3c7b7d
+
 }
 
 .popup-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    text-align: center;
-    position: relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  position: relative;
 }
 
 .close-btn {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .question-section h2 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
+  font-family: "Wix Madefor Text", sans-serif;
 }
 
 .options button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: #3c7b7d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Wix Madefor Text", sans-serif;
 }
 
 .options button:hover {
-    background-color: #45a049;
+  background-color: #2faeac;
+}
+
+.quiz-header {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  font-family: "Wix Madefor Text", sans-serif;
+}
+
+.instructions-box {
+  position: fixed;
+  top: 10%;
+  left: 50px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 200px;
+}
+
+.instructions-box h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.instructions-box p {
+  font-size: 1rem;
+  margin: 5px 0;
 }
