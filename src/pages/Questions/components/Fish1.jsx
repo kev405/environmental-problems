@@ -30,7 +30,7 @@
 
                 const x = radius * Math.cos(angle);
                 const z = radius * Math.sin(angle);
-                const y = 3 + Math.sin(angle * 2) * 0.5; // Movimiento vertical opcional
+                const y = 3 + Math.sin(angle * 2) * 2; // Ajusta el factor de multiplicación para cambiar la amplitud
 
                 setPosition([x, y, z]);
             }, 50); // Intervalo en milisegundos (ajústalo para cambiar la fluidez)

@@ -7,7 +7,6 @@ const Fish1 = ({ initialPosition, ...props }) => {
     const { actions } = useAnimations(animations, group)
     const [position, setPosition] = useState(initialPosition);
     const [rotation, setRotation] = useState([0, 5, 0]); // Estado para la rotación
-    console.log("Rotación: ", rotation);
 
     useEffect(() => {
         console.log("Animaciones disponibles:", animations.map(a => a.name));
