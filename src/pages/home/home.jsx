@@ -79,7 +79,7 @@ const Home = () => {
   }
 
   const handleClicked6 = () => {
-    navigate("/form");
+    navigate("/quiz");
   }
 
 

@@ -24,6 +24,7 @@ const useAuthStore = create((set) => ({
   loading: true,
   scores: [],
   rewards: [],
+  quices: [],
 
   loginGoogleWithPopUp: async () => {
     await signInWithPopup(auth, provider)
@@ -86,6 +87,10 @@ const useAuthStore = create((set) => ({
 
   setRewards: (rewards) => {
     set({ rewards: rewards });
+  },
+
+  setQuiz: (quiz) => {
+    set((state) => ({ quices: [...state.quices, quiz] }));
   },
 
   observeAuthState: () => {
