@@ -6,7 +6,7 @@ import {
   signOut,
   FacebookAuthProvider,
   OAuthProvider,
-  createUserWithEmailAndPassword, 
+  createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword
 } from "firebase/auth";
@@ -22,26 +22,28 @@ const AppleProvider = new OAuthProvider('apple.com');
 const useAuthStore = create((set) => ({
   user: null,
   loading: true,
+  scores: [],
+  rewards: [],
 
   loginGoogleWithPopUp: async () => {
     await signInWithPopup(auth, provider)
-    .catch((error) => {
-      console.log(error);
-    });
+      .catch((error) => {
+        console.log(error);
+      });
   },
 
   loginFacebookWithPopUp: async () => {
     await signInWithPopup(auth, providerFacebook)
-    .catch((error) => {
-      console.log(error);
-    });
+      .catch((error) => {
+        console.log(error);
+      });
   },
 
   loginAppleWithPopUp: async () => {
     await signInWithPopup(auth, AppleProvider)
-    .catch((error) => {
-      console.log(error);
-    });
+      .catch((error) => {
+        console.log(error);
+      });
   },
 
   logout: async () => {
@@ -77,6 +79,15 @@ const useAuthStore = create((set) => ({
     }
   },
 
+
+  setScores: (scores) => {
+    set({ scores: scores });
+  },
+
+  setRewards: (rewards) => {
+    set({ rewards: rewards });
+  },
+
   observeAuthState: () => {
     set({ loading: true });
     onAuthStateChanged(auth, (user) => {
@@ -87,6 +98,8 @@ const useAuthStore = create((set) => ({
       }
     });
   },
+
+
 }));
 
 export default useAuthStore;

@@ -1,0 +1,46 @@
+/* Fondo principal con imagen */
+.background {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/images/fondo.jpg") center / cover no-repeat;
+  background-size: cover; /* Ajusta la imagen de fondo */
+  background-position: center; /* Centrado de la imagen */
+}
+
+/* Cuadro de las insignias */
+.reward-box {
+  background: #abd2cc; /* Fondo blanco */
+  padding: 40px; /* Espaciado interno */
+  border-radius: 20px; /* Bordes redondeados */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Fila de insignias */
+.reward-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Cada insignia */
+.reward-item {
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 1.5rem;
+  width: 150px;
+}
+
+/* Estilo de las imágenes */
+.reward-item img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 10px;
+}
