@@ -1,9 +1,46 @@
 /* eslint-disable react/no-unknown-property */
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, Html, Text3D } from "@react-three/drei";
+import {
+  Environment,
+  OrbitControls,
+  Html,
+  Text3D,
+  useVideoTexture,
+} from "@react-three/drei";
 import { Physics, useBox } from "@react-three/cannon";
+import { EffectComposer, Vignette } from "@react-three/postprocessing";
 import Escasez from "./Escasez";
+
+const Video = (props) => {
+  const texture = useVideoTexture("/videos/video.mp4", {
+    muted: false,
+    loop: true,
+    start: true,
+  });
+
+  const [pause, setPause] = useState(false);
+
+  const handleVideo = useCallback(
+    (e) => {
+      e.stopPropagation();
+      if (texture.image.paused) {
+        texture.image.play();
+      } else {
+        texture.image.pause();
+      }
+      setPause(!pause);
+    },
+    [pause, texture]
+  );
+
+  return (
+    <mesh {...props} onClick={handleVideo}>
+      <planeGeometry args={[2, 1]} />
+      <meshStandardMaterial map={texture} toneMapped={false} />
+    </mesh>
+  );
+};
 
 const controls = {
   left: "left",
@@ -178,7 +215,7 @@ export const ProEscasez = () => {
               cursor: "pointer",
               outline: "none",
               transition: "all 0.3s ease",
-              zIndex:-1
+              zIndex: -1,
             }}
             onClick={handleButtonClickDerecho}
           >
@@ -388,37 +425,16 @@ export const ProEscasez = () => {
             </div>
           </div>
         </Html>
-        {/* Video*/}
-        <Html position={[25, 0, 0]} center>
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              right: "2rem",
-              transform: "translateY(-50%)",
-              width: "400px",
-              backgroundColor: "#406D66",
-              padding: "1rem",
-              borderRadius: "10px",
-              textAlign: "center",
-              fontFamily: "Wix Madefor Text",
-            }}
-          >
-            <h2 style={{ color: "#FFFFFF" }}>Video Informativo</h2>
-            <video
-              src="src/components/escasez/video/video.mp4"
-              controls
-              style={{ width: "100%", borderRadius: "10px", marginTop: "1rem" }}
-            />
-          </div>
-        </Html>
-
         <OrbitControls enablePan={true} enableZoom={true} />
 
         <Environment
           files="/cubemap/tierra-hdr/dry_cracked_lake_2k.hdr"
           background={true}
         />
+        <Video name="screen" position={[13, 2, 5]} scale={5}></Video>
+        <EffectComposer>
+          <Vignette eskil={false} offset={0.05} darkness={0.8} />
+        </EffectComposer>
       </Canvas>
       {/*instrucciones*/}
       <div
@@ -428,7 +444,7 @@ export const ProEscasez = () => {
           backgroundColor: "rgba(255, 255, 255, 0.8)",
           position: "absolute",
           top: "20px",
-          left: "20px", 
+          left: "20px",
           borderRadius: "10px",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
           fontFamily: "Wix Madefor Text",
@@ -440,14 +456,15 @@ export const ProEscasez = () => {
             Usa las teclas de flecha izquierda/derecha y mira que sucede con el
             modelo 3D.
           </li>
-          <li>
-            Usa la ruedita del mouse y mira que sucede con el
-            modelo 3D.
-          </li>
+          <li>Dale clic al modelo 3D y mira que sucede.</li>
           <li>
             Haz clic en los botones para obtener más información sobre la
             escasez de agua.
           </li>
+          <li>
+            Usa la ruedita del mouse y da clic para interactuar con el modelo 3D{" "}
+          </li>
+          <li>Puedes empezar el video y pausarlo dándole clic.</li>
         </ul>
       </div>
     </div>
