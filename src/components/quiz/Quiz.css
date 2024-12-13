@@ -1,0 +1,101 @@
+/* Fondo principal del quiz */
+.quiz-background {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("/images/fondo-quiz.jpg") center / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Cuadro del cuestionario */
+  .quiz-container {
+    background: rgba(173, 210, 204, 0.9); /* Fondo semitransparente */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+    text-align: center;
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Título del quiz */
+  .quiz-container h1 {
+    font-size: 2.5rem;
+    color: #2d2d2d;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para resaltar el título */
+  }
+  
+  /* Estilo de la pregunta */
+  .question-section h2 {
+    font-size: 1.8rem;
+    color: #3d5a5d;
+    margin-bottom: 20px;
+  }
+  
+  /* Opciones de respuesta */
+  .options button {
+    background: #3d5a5d; /* Verde */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 8px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+  
+  /* Efecto hover en las opciones */
+  .options button:hover {
+    background: #6ba1a7;
+    transform: scale(1.05); /* Aumentar tamaño al pasar el cursor */
+  }
+  
+  /* Sección de puntuación al final del quiz */
+  .score-section {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3d5a5d;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Caja de recompensas (si deseas agregarla más adelante) */
+  .reward-box {
+    background: #abd2cc; /* Fondo suave */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Estilos del botón de recompensa */
+  .reward-item button {
+    background-color: #158c99;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .reward-item button:hover {
+    background-color: #158c99;
+  }
+  
+  /* Estilo de texto y sombra del título */
+  .title-header {
+    font-size: 2rem;
+    color: #2d2d2d;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra para el título */
+  }
+  

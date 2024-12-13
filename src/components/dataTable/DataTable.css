@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+/* Estilo para el contenedor de la tabla */
+.home-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  flex-direction: column; /* Coloca el título encima de la tabla */
+  align-items: center; /* Centra horizontalmente */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  background: url("/images/fondo.jpg") center / cover no-repeat;
+  padding: 0; /* Asegura que no haya espacio alrededor del contenedor */
+}
+
+/* Estilo para el título */
+/* Estilo para el título */
+.title-header {
+  font-family: "Anton", sans-serif;
+  font-size: 4vw;
+  color: #406d66;
+  position: absolute;
+  top: 100px; /* Ajusta la distancia desde el borde superior */
+  text-shadow: 2px 2px 4px rgba(252, 252, 252, 0.7);
+  text-align: center;
+  letter-spacing: -0.5px;
+  letter-spacing: 5px;
+}
+
+/* Estilo para el contenedor de la tabla */
+.data-table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ocupa todo el ancho */
+}
+
+/* Estilo de la tabla */
+.data-table {
+  width: 40%; /* Ajusta el tamaño (menos de 70% si está muy ancha) */
+  border-collapse: collapse; /* Elimina los espacios entre celdas */
+  font-family: "Wix Madefor Text", sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Bordes redondeados */
+  overflow: hidden; /* Asegura que los bordes redondeados se vean bien */
+  background-color: white; /* Fondo blanco para la tabla */
+}
+
+/* Estilo para las celdas de la tabla */
+.data-table th,
+.data-table td {
+  padding: 12px 15px; /* Espaciado dentro de las celdas */
+  text-align: center; /* Centra el contenido */
+  border: 3px solid #203b37; /* Bordes en las celdas */
+}
+
+/* Encabezado de la tabla */
+.data-table th {
+  background-color: #406d66;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+/* Fila alterna de la tabla */
+.data-table tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+/* Estilo para las filas de la tabla al pasar el mouse */
+.data-table tr:hover {
+  background-color: #85bbb2;
+  cursor: pointer;
+}
