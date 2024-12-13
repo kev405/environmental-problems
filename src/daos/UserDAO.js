@@ -17,6 +17,7 @@ class UserDAO {
     this.collectionRef = collection(db, "users");
     this.scoresCollectionRef = collection(db, "scores");
     this.rewardsCollectionRef = collection(db, "rewards");
+    this.quizzesCollectionRef = collection(db, "quizzes");
   }
 
   async getUserById(id) {
@@ -117,6 +118,48 @@ class UserDAO {
       .catch((error) => {
         console.error("Error updating document: ", error);
       });
+  }
+
+
+
+  async saveQuizState(quizState) {
+    try {
+      // Verifico si el usuario ya tiene un estado de quiz guardado
+      const q = query(this.quizzesCollectionRef, where("email", "==", quizState.email));
+      const querySnapshot = await getDocs(q);
+      // Si ya tiene un estado de quiz, lo actualizo
+      if (!querySnapshot.empty) {
+        const docId = querySnapshot.docs[0].id;
+        await setDoc(doc(this.quizzesCollectionRef, docId), quizState);
+      } else {
+        // Si no tiene un estado de quiz, lo agrego
+        await addDoc(this.quizzesCollectionRef, quizState);
+      }
+      return { success: true };
+    } catch (error) {
+      console.error("Error saving quiz state: ", error);
+      return { success: false };
+    }
+
+
+  }
+
+
+  async getQuizStateByEmail(email) {
+    try {
+      const q = query(this.quizzesCollectionRef, where("email", "==", email));
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+        return { success: true, data: querySnapshot.docs[0].data() };
+      } else {
+        return { success: false, data: null };
+      }
+
+    }
+    catch (error) {
+      console.error("Error getting quiz state: ", error);
+      return { success: false, data: null };
+    }
   }
 }
 
