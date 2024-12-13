@@ -1,6 +1,6 @@
 import React from "react";
 import useAuthStore from "../../stores/use-auth-store";
-import "./dataTable.css"; // Importa el archivo CSS que contiene los estilos
+import "./DataTable.css"; // Importa el archivo CSS que contiene los estilos
 
 const DataTable = () => {
   const { scores } = useAuthStore();
