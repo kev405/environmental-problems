@@ -129,7 +129,7 @@ const Home = () => {
           MIS RECOMPENSAS
         </button>
         <button className="menu-button" onClick={handleClicked6}>
-          FORMULARIO
+          QUIZ
         </button>
         <button className="menu-button" onClick={handleLogout}>
           CERRAR SESION
