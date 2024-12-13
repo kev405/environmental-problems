@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
 import "./Reward.css";
-import useAuthStore from '../../stores/use-auth-store';
+import useAuthStore from "../../stores/use-auth-store";
 
 const Reward = () => {
   const { rewards } = useAuthStore();
 
-  console.log(rewards);
 
   return (
     <div className="background">
