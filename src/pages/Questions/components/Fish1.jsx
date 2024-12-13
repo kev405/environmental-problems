@@ -22,7 +22,7 @@
 
         useEffect(() => {
             const radius = 10; // Radio del círculo
-            const speed = 0.001; // Velocidad de rotación
+            const speed = 0.02; // Velocidad de rotación
             let angle = 0; // Ángulo inicial en radianes
 
             const interval = setInterval(() => {
